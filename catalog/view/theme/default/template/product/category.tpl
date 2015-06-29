@@ -13,11 +13,12 @@
 						</div>
 						<div class="product-color">
 							<h4>Доступные цвета</h4>
-							<div class="color-item">
-								<span class="color-box white"></span>
-								<span class="color-box gold"></span>
-								<span class="color-box red"></span>
-								<span class="color-box black"></span>
+                            <div class="color-item">
+                            <?php foreach ($product['options'] as $option) { ?>
+                                <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_COLOR_ID) { ?>
+    								<span class="color-box <?php echo CorsicaConfig::$productOptionColorMap[$option['option_value_id']]; ?>"></span>
+                                <?php } ?>
+                            <?php } ?>
 							</div>
 						</div>
 					</div>
