@@ -46,6 +46,7 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
 <script src="<?php echo $theme; ?>/js/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script src="<?php echo $theme; ?>/js/remodal.min.js" type="text/javascript"></script>
 <script src="<?php echo $theme; ?>/js/validate.min.js" type="text/javascript"></script>
+<script src="<?php echo $theme; ?>/js/common.js" type="text/javascript"></script>
 
 <?php foreach ($scripts as $script) { ?>
 	<script src="<?php echo $script; ?>" type="text/javascript"></script>
