@@ -1,0 +1,12 @@
+.idea
+.gitignore
+/config.php
+/admin/config.php
+/image/catalog/*
+!/image/catalog/index.html
+/image/cache/*
+!/image/cache/index.html
+/system/cache/*
+!/system/cache/index.html
+/system/logs/*
+!/system/logs/index.html
