@@ -1,0 +1,106 @@
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+  display: block;
+  min-height: 1px;
+  float: left;
+  box-sizing: border-box;
+}
+.col-1 img,
+.col-2 img,
+.col-3 img,
+.col-4 img,
+.col-5 img,
+.col-6 img,
+.col-7 img,
+.col-8 img,
+.col-9 img,
+.col-10 img,
+.col-11 img,
+.col-12 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.group:after {
+  display: table;
+  content: "";
+  clear: both;
+}
+.col-1 {
+  width: 100%;
+}
+.col-2 {
+  width: 50%;
+}
+.col-3 {
+  width: 33.3333%;
+}
+.col-4 {
+  width: 25%;
+}
+.col-5 {
+  width: 20%;
+}
+.col-6 {
+  width: 16.6666%;
+}
+.col-7 {
+  width: 14.2857%;
+}
+.col-8 {
+  width: 12.5%;
+}
+.col-9 {
+  width: 11.1111%;
+}
+.col-10 {
+  width: 10%;
+}
+.col-11 {
+  width: 9.0909%;
+}
+.col-12 {
+  width: 7.3333%;
+}
+@media (max-width: 768px) {
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7,
+  .col-8,
+  .col-9,
+  .col-10,
+  .col-11,
+  .col-12 {
+    width: 100%;
+  }
+  .col-1:after,
+  .col-2:after,
+  .col-3:after,
+  .col-4:after,
+  .col-5:after,
+  .col-6:after,
+  .col-7:after,
+  .col-8:after,
+  .col-9:after,
+  .col-10:after,
+  .col-11:after,
+  .col-12:after {
+    display: table;
+    content: "";
+    clear: both;
+  }
+}

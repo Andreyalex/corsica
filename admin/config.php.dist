@@ -1,0 +1,30 @@
+<?php
+// HTTP
+define('HTTP_SERVER', 'http://corsica.loc/admin/');
+define('HTTP_CATALOG', 'http://corsica.loc/');
+
+// HTTPS
+define('HTTPS_SERVER', 'http://corsica.loc/admin/');
+define('HTTPS_CATALOG', 'http://corsica.loc/');
+
+// DIR
+define('DIR_APPLICATION', '/home/andrey/www/gokov/corsica/src/admin/');
+define('DIR_SYSTEM', '/home/andrey/www/gokov/corsica/src/system/');
+define('DIR_LANGUAGE', '/home/andrey/www/gokov/corsica/src/admin/language/');
+define('DIR_TEMPLATE', '/home/andrey/www/gokov/corsica/src/admin/view/template/');
+define('DIR_CONFIG', '/home/andrey/www/gokov/corsica/src/system/config/');
+define('DIR_IMAGE', '/home/andrey/www/gokov/corsica/src/image/');
+define('DIR_CACHE', '/home/andrey/www/gokov/corsica/src/system/cache/');
+define('DIR_DOWNLOAD', '/home/andrey/www/gokov/corsica/src/system/download/');
+define('DIR_UPLOAD', '/home/andrey/www/gokov/corsica/src/system/upload/');
+define('DIR_LOGS', '/home/andrey/www/gokov/corsica/src/system/logs/');
+define('DIR_MODIFICATION', '/home/andrey/www/gokov/corsica/src/system/modification/');
+define('DIR_CATALOG', '/home/andrey/www/gokov/corsica/src/catalog/');
+
+// DB
+define('DB_DRIVER', 'mysqli');
+define('DB_HOSTNAME', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '7117407');
+define('DB_DATABASE', 'corsica.dev');
+define('DB_PREFIX', 'cs_');
