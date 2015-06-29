@@ -55,7 +55,7 @@
                     </table>
                 </div>
                 <div class="product-add">
-                    <button class="btn btn-default">Добавить в корзину</button>
+                    <button class="btn btn-default" onclick="cart.add('<?php echo $product_id; ?>')">Добавить в корзину</button>
                     <button class="btn btn-default">Сделать заказ</button>
                 </div>
                 <div class="product-cart">
