@@ -38,6 +38,7 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
 	<link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
 
+<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <link href="http://fonts.googleapis.com/css?family=Open+Sans&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
 <link href="<?php echo $theme; ?>/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="<?php echo $theme; ?>/css/remodal.css" rel="stylesheet" type="text/css">
@@ -47,6 +48,7 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
 <script src="<?php echo $theme; ?>/js/remodal.min.js" type="text/javascript"></script>
 <script src="<?php echo $theme; ?>/js/validate.min.js" type="text/javascript"></script>
 <script src="<?php echo $theme; ?>/js/common.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
 <?php foreach ($scripts as $script) { ?>
 	<script src="<?php echo $script; ?>" type="text/javascript"></script>
@@ -60,22 +62,25 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
 	<nav class="navbar-top">
 		<div class="top-menu">
 			<ul class="left-menu">
-				<li><a href="/"><img src="<?php echo $theme; ?>/image/icon-logo.png"></a></li>
+				<li class="menu-item"><a href="/"><img src="<?php echo $theme; ?>/image/icon-logo.png"></a></li>
 
 				<?php foreach ($informations as $information) { ?>
-					<li><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
+					<li class="menu-item"><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
 				<?php } ?>
 
 			</ul>
 			<ul class="right-menu">
-				<?php if ($logged) { ?>
-					<li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-		            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+                <li class="menu-item">
+                    <?php echo $cart; ?>
+                </li>
+                <?php if ($logged) { ?>
+					<li class="menu-item"><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
+		            <li class="menu-item"><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
 				<?php } else { ?>
-					<li><a href="<?php echo $login; ?>" class="btn btn-login"><?php echo $text_login; ?></a></li>
-					<li><a href="<?php echo $register; ?>" class="btn btn-registration"><?php echo $text_register; ?></a></li>
-				<li>Icon</li>
-				<li>
+					<li class="menu-item"><a href="<?php echo $login; ?>" class="btn btn-login"><?php echo $text_login; ?></a></li>
+					<li class="menu-item"><a href="<?php echo $register; ?>" class="btn btn-registration"><?php echo $text_register; ?></a></li>
+				<li class="menu-item">Icon</li>
+				<li class="menu-item">
 					<?php echo $language; ?>
 				</li>
 				<?php } ?>

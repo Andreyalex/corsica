@@ -81,6 +81,8 @@ a,
 :hover {
   text-decoration: none;
   transition: all .4s;
+  color: #000;
+  text-decoration: none !important;
 }
 .form-group {
   margin-bottom: 15px;
@@ -288,22 +290,22 @@ abbr {
   height: 40px;
   background: #e3e5e6;
 }
-.top-menu li {
+.top-menu .menu-item {
   display: inline-block;
   height: 40px;
   float: left;
 }
-.top-menu a {
+.top-menu .menu-item > a {
   display: block;
   padding: 0 10px;
   text-transform: uppercase;
   color: #7a797e;
   line-height: 40px;
 }
-.top-menu a:hover {
+.top-menu .menu-item > a:hover {
   color: #7a797e;
 }
-.top-menu img {
+.top-menu .menu-item > a > img {
   padding-top: 7px;
 }
 .left-menu,
@@ -312,16 +314,16 @@ abbr {
   padding: 0;
   list-style: none;
 }
-.left-menu li,
-.right-menu li {
+.left-menu .menu-item,
+.right-menu .menu-item {
   border-left: 1px solid #adb3b6;
 }
-.left-menu li:first-child,
-.right-menu li:first-child {
+.left-menu .menu-item:first-child,
+.right-menu .menu-item:first-child {
   border-left: none;
 }
-.left-menu a:hover,
-.right-menu a:hover,
+.left-menu .menu-item > a:hover,
+.right-menu .menu-item > a:hover,
 .left-menu .active,
 .right-menu .active {
   background: #c8ccce;
@@ -343,6 +345,28 @@ abbr {
   color: #7a797e;
   line-height: 40px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .top-submenu a:hover {
   color: #7a797e;
 }
@@ -494,4 +518,52 @@ abbr {
   .col-6.product-item {
     width: 100%;
   }
+}
+/* cart */
+#cart {
+    margin-bottom: 10px;
+}
+#cart > .btn {
+    font-size: 14px;
+    display: block;
+    padding: 0 10px;
+    text-transform: uppercase;
+    color: #7a797e;
+    line-height: 40px;
+    background: none;
+}
+#cart.open > .btn {
+    color: #666;
+    box-shadow: none;
+    text-shadow: none;
+}
+#cart.open > .btn:hover {
+    color: #444;
+}
+#cart .dropdown-menu {
+    background: #eee;
+    z-index: 1001;
+}
+#cart .dropdown-menu {
+    min-width: 100%;
+}
+@media (max-width: 478px) {
+    #cart .dropdown-menu {
+        width: 100%;
+    }
+}
+#cart .dropdown-menu table {
+    margin-bottom: 10px;
+}
+#cart .dropdown-menu li > div {
+    min-width: 427px;
+    padding: 0 10px;
+}
+@media (max-width: 478px) {
+    #cart .dropdown-menu li > div {
+        min-width: 100%;
+    }
+}
+#cart .dropdown-menu li p {
+    margin: 20px 0;
 }

@@ -138,12 +138,12 @@ var cart = {
       data: 'product_id=' + product_id + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
       dataType: 'json',
       beforeSend: function() {
-//        $('#cart > button').button('loading');
+        $('#cart > button').button('loading');
       },
       success: function(json) {
         $('.alert, .text-danger').remove();
 
-//        $('#cart > button').button('reset');
+        $('#cart > button').button('reset');
 
         if (json['redirect']) {
           location = json['redirect'];
@@ -168,10 +168,10 @@ var cart = {
       data: 'key=' + key + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
       dataType: 'json',
       beforeSend: function() {
-//        $('#cart > button').button('loading');
+        $('#cart > button').button('loading');
       },
       success: function(json) {
-//        $('#cart > button').button('reset');
+        $('#cart > button').button('reset');
 
         $('#cart-total').html(json['total']);
 
@@ -190,10 +190,10 @@ var cart = {
       data: 'key=' + key,
       dataType: 'json',
       beforeSend: function() {
-//        $('#cart > button').button('loading');
+        $('#cart > button').button('loading');
       },
       success: function(json) {
-//        $('#cart > button').button('reset');
+        $('#cart > button').button('reset');
 
         $('#cart-total').html(json['total']);
 
@@ -218,10 +218,10 @@ var voucher = {
       data: 'key=' + key,
       dataType: 'json',
       beforeSend: function() {
-//        $('#cart > button').button('loading');
+        $('#cart > button').button('loading');
       },
       complete: function() {
-//        $('#cart > button').button('reset');
+        $('#cart > button').button('reset');
       },
       success: function(json) {
         $('#cart-total').html(json['total']);

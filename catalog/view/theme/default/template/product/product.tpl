@@ -3,20 +3,25 @@
 <div class="container">
     <div id="content" class="product">
 
-        <div class="group">
+        <div class="group" id="product">
+
+            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+
             <div class="col-2 product-image">
                 <?php if ($thumb) { ?>
-                    <div class="image-big">
+                    <a class="image-big">
                         <img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
-                    </div>
+                    </a>
                 <?php } ?>
 
                 <?php if ($images) { ?>
-                    <?php foreach ($images as $image) { ?>
-                        <div class="col-4 image-thumbnail">
-                            <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
-                        </div>
-                    <?php } ?>
+                    <div class="thumbnails">
+                        <?php foreach ($images as $image) { ?>
+                            <a href="<?php echo $image['thumb']; ?>" class="col-4 image-thumbnail thumbnail">
+                                <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
+                            </a>
+                        <?php } ?>
+                    </div>
                 <?php } ?>
             </div>
             <div class="col-2 product-content">
@@ -34,9 +39,9 @@
                         <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_COLOR_ID) { ?>
                             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>" style="overflow: hidden">
                                 <label class="control-label"><?php echo $option['name']; ?></label>
-                                <div id="input-option<?php echo $option['product_option_id']; ?>">
+                                <div id="input-option<?php echo $option['product_option_id']; ?>" style="overflow: hidden">
                                     <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                                        <div class="radio" style="float:left;">
+                                        <div style="float:left;">
                                             <label class="color-item">
                                                 <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
                                                 <span class="color-box <?php echo CorsicaConfig::$productOptionColorMap[$option_value['option_value_id']]; ?>"></span>
@@ -52,7 +57,7 @@
                         <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_SIZE_ID) { ?>
                             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>" style="overflow: hidden">
                                 <label class="control-label"><?php echo $option['name']; ?></label>
-                                <div id="input-option<?php echo $option['product_option_id']; ?>">
+                                <div id="input-option<?php echo $option['product_option_id']; ?>" style="overflow: hidden">
                                     <div class="table-size">
                                         <?php foreach (CorsicaConfig::$productOptionSizeMap as $name => $sizeArray) { ?>
                                             <?php $hit = false; foreach ($option['product_option_value'] as $option_value) { ?>
@@ -71,21 +76,24 @@
                         <?php } ?>
                     <?php } ?>
 
+                    <div class="form-group">
+                        <label class="control-label" for="input-quantity">Количество</label>
+                        <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control">
+                    </div>
+
                 </div>
 
                 <div class="product-add">
+
                     <button id="button-cart" class="btn btn-default">Добавить в корзину</button>
                     <button class="btn btn-default">Сделать заказ</button>
-                </div>
-                <div class="product-cart">
-                    <?php echo $cart; ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script type="text/javascript"><!--
+<script type="text/javascript">
 $('#button-cart').on('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/cart/add',
@@ -138,12 +146,23 @@ $('#button-cart').on('click', function() {
 
 $('.size-items').on('click', function(ev) {
   if ($(this).hasClass('disabled')) return;
-  $(this).find('input').triggerHandler('click');
+  if (ev.target && $(ev.target).prop("tagName") == 'INPUT') return;
+  $(this).find('input').click();
   $(this).parent().find('.size-items').removeClass('selected');
   $(this).addClass('selected');
 });
 
 
-//--></script>
+$(document).ready(function() {
+    $('.thumbnails').magnificPopup({
+        type:'image',
+        delegate: 'a',
+        gallery: {
+            enabled:true
+        }
+    });
+});
+
+</script>
 
 <?php echo $footer; ?>
