@@ -9,7 +9,13 @@
 					<div class="product-desc text-center">
 						<div class="product-size">
 							<h4>Доступные размеры</h4>
-							<div class="size-item">46 - 52</div>
+                            <div class="size-item">
+                                <?php foreach ($product['options'] as $option) { ?>
+                                    <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_SIZE_ID) { ?>
+                                        <?php echo $option['name']; ?>
+                                    <?php } ?>
+                                <?php } ?>
+                            </div>
 						</div>
 						<div class="product-color">
 							<h4>Доступные цвета</h4>

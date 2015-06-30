@@ -30,32 +30,51 @@
                 </div>
 
                 <div class="product-table">
-                    <table class="table-size">
-                        <tr>
-                            <td>XS</td>
-                            <td>S</td>
-                            <td>M</td>
-                            <td>L</td>
-                            <th>WORLD</th>
-                        </tr>
-                        <tr>
-                            <td>40-42</td>
-                            <td>44-46</td>
-                            <td>48-50</td>
-                            <td>52</td>
-                            <th>UKR / RUS</th>
-                        </tr>
-                        <tr>
-                            <td>34-36</td>
-                            <td>38-40</td>
-                            <td>42-44</td>
-                            <td>52</td>
-                            <th>EUR</th>
-                        </tr>
-                    </table>
+                    <?php foreach ($options as $option) { ?>
+                        <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_COLOR_ID) { ?>
+                            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>" style="overflow: hidden">
+                                <label class="control-label"><?php echo $option['name']; ?></label>
+                                <div id="input-option<?php echo $option['product_option_id']; ?>">
+                                    <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                                        <div class="radio" style="float:left;">
+                                            <label class="color-item">
+                                                <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
+                                                <span class="color-box <?php echo CorsicaConfig::$productOptionColorMap[$option_value['option_value_id']]; ?>"></span>
+                                            </label>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    <?php } ?>
+
+                    <?php foreach ($options as $option) { ?>
+                        <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_SIZE_ID) { ?>
+                            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>" style="overflow: hidden">
+                                <label class="control-label"><?php echo $option['name']; ?></label>
+                                <div id="input-option<?php echo $option['product_option_id']; ?>">
+                                    <div class="table-size">
+                                        <?php foreach (CorsicaConfig::$productOptionSizeMap as $name => $sizeArray) { ?>
+                                            <?php $hit = false; foreach ($option['product_option_value'] as $option_value) { ?>
+                                                <?php if ($option_value['name'] == $name) { $hit = true; break; } ?>
+                                            <?php } ?>
+                                            <div class="size-items<?php echo $hit? '':' disabled';?>">
+                                                <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" style="display: none;" />
+                                                <div class="size-item"><?php echo $sizeArray[0]; ?></div>
+                                                <div class="size-item"><?php echo $sizeArray[1]; ?></div>
+                                                <div class="size-item"><?php echo $sizeArray[2]; ?></div>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    <?php } ?>
+
                 </div>
+
                 <div class="product-add">
-                    <button class="btn btn-default" onclick="cart.add('<?php echo $product_id; ?>')">Добавить в корзину</button>
+                    <button id="button-cart" class="btn btn-default">Добавить в корзину</button>
                     <button class="btn btn-default">Сделать заказ</button>
                 </div>
                 <div class="product-cart">
@@ -116,6 +135,15 @@ $('#button-cart').on('click', function() {
 		}
 	});
 });
+
+$('.size-items').on('click', function(ev) {
+  if ($(this).hasClass('disabled')) return;
+  $(this).find('input').triggerHandler('click');
+  $(this).parent().find('.size-items').removeClass('selected');
+  $(this).addClass('selected');
+});
+
+
 //--></script>
 
 <?php echo $footer; ?>

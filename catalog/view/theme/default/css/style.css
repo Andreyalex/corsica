@@ -196,13 +196,46 @@ abbr {
   border: none;
 }
 .table-size td,
-.table-size th {
+.table-size th,
+.table-size .size-item {
   min-width: 25px;
   padding: 5px 10px;
 }
-.table-size td {
+.table-size td,
+.table-size .size-items .size-item {
   text-align: center;
   background: #c8ccce;
+}
+.table-size .size-items {
+    float: left;
+    overflow: hidden;
+    margin-left: 1px;
+}
+.table-size .size-items {
+    cursor: pointer;
+}
+.table-size .size-items:hover {
+    background: #888888;
+}
+.table-size .size-items.disabled {
+    cursor: default;
+}
+.table-size .size-items.selected {
+    background: #b8bcbe;
+}
+.table-size .size-items.selected .size-item {
+    background: #a8acae;
+}
+.table-size .size-items.disabled:hover {
+    background: transparent;
+}
+.table-size .size-items.disabled .size-item {
+    background: #e8ecee;
+    color: #c8ccce;
+}
+
+.table-size .size-item {
+    margin: 1px;
 }
 .table-size th {
   text-align: left;
