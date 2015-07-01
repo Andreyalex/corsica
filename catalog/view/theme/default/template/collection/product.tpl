@@ -78,7 +78,7 @@
                         <ul class="list-unstyled">
                             <?php if (!$special) { ?>
                                 <li>
-                                    <h2><?php echo 'Цена за единицу товара'; ?></h2>
+                                    <h2><?php echo $price; ?></h2>
                                 </li>
                             <?php } else { ?>
                                 <li><span style="text-decoration: line-through;"><?php echo $price; ?></span></li>
