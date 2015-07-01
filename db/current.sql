@@ -2,7 +2,8 @@
 SQLyog Ultimate v9.50 
 MySQL - 5.5.43-0ubuntu0.14.04.1 : Database - corsica.dev
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
