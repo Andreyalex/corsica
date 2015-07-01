@@ -56,15 +56,14 @@
                     <?php foreach ($options as $option) { ?>
                         <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_SIZE_ID) { ?>
                             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>" style="overflow: hidden">
-                                <label class="control-label"><?php echo $option['name']; ?></label>
-                                <div id="input-option<?php echo $option['product_option_id']; ?>" style="overflow: hidden">
-                                    <div class="table-size">
+                                <label class="control-label"><?php echo 'Размерьі в ростовке'; ?></label>
+                                <div style="overflow: hidden">
+                                    <div class="table-size readonly">
                                         <?php foreach (CorsicaConfig::$productOptionSizeMap as $name => $sizeArray) { ?>
                                             <?php $hit = false; foreach ($option['product_option_value'] as $option_value) { ?>
                                                 <?php if ($option_value['name'] == $name) { $hit = true; break; } ?>
                                             <?php } ?>
                                             <div class="size-items<?php echo $hit? '':' disabled';?>">
-                                                <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" style="display: none;" />
                                                 <div class="size-item"><?php echo $sizeArray[0]; ?></div>
                                                 <div class="size-item"><?php echo $sizeArray[1]; ?></div>
                                                 <div class="size-item"><?php echo $sizeArray[2]; ?></div>
@@ -75,9 +74,38 @@
                             </div>
                         <?php } ?>
                     <?php } ?>
+                    <?php if ($price) { ?>
+                        <ul class="list-unstyled">
+                            <?php if (!$special) { ?>
+                                <li>
+                                    <h2><?php echo 'Цена за единицу товара'; ?></h2>
+                                </li>
+                            <?php } else { ?>
+                                <li><span style="text-decoration: line-through;"><?php echo $price; ?></span></li>
+                                <li>
+                                    <h2><?php echo $special; ?></h2>
+                                </li>
+                            <?php } ?>
+                            <?php if ($tax) { ?>
+                                <li><?php echo $text_tax; ?> <?php echo $tax; ?></li>
+                            <?php } ?>
+                            <?php if ($points) { ?>
+                                <li><?php echo $text_points; ?> <?php echo $points; ?></li>
+                            <?php } ?>
+                            <?php if ($discounts) { ?>
+                                <li>
+                                    <hr>
+                                </li>
+                                <?php foreach ($discounts as $discount) { ?>
+                                    <li><?php echo $discount['quantity']; ?><?php echo $text_discount; ?><?php echo $discount['price']; ?></li>
+                                <?php } ?>
+                            <?php } ?>
+                        </ul>
+                        <br/>
+                    <?php } ?>
 
                     <div class="form-group">
-                        <label class="control-label" for="input-quantity">Количество</label>
+                        <label class="control-label" for="input-quantity">Количество ростовок</label>
                         <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control">
                     </div>
 
@@ -143,15 +171,6 @@ $('#button-cart').on('click', function() {
 		}
 	});
 });
-
-$('.size-items').on('click', function(ev) {
-  if ($(this).hasClass('disabled')) return;
-  if (ev.target && $(ev.target).prop("tagName") == 'INPUT') return;
-  $(this).find('input').click();
-  $(this).parent().find('.size-items').removeClass('selected');
-  $(this).addClass('selected');
-});
-
 
 $(document).ready(function() {
     $('.thumbnails, .product-image').magnificPopup({

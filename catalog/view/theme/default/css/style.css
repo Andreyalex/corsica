@@ -245,6 +245,13 @@ abbr {
 .table-size th {
   text-align: left;
 }
+
+.table-size.readonly .size-items,
+.table-size.readonly .size-items:hover {
+    cursor: pointer;
+    background: none;
+}
+
 .text-left {
   text-align: left;
 }
@@ -298,17 +305,17 @@ abbr {
   height: 40px;
   float: left;
 }
-.top-menu .menu-item > a {
+.top-menu .menu-item > * {
   display: block;
   padding: 0 10px;
   text-transform: uppercase;
   color: #7a797e;
   line-height: 40px;
 }
-.top-menu .menu-item > a:hover {
+.top-menu .menu-item > *:hover {
   color: #7a797e;
 }
-.top-menu .menu-item > a > img {
+.top-menu .menu-item > * > img {
   padding-top: 7px;
 }
 .left-menu,
@@ -325,8 +332,8 @@ abbr {
 .right-menu .menu-item:first-child {
   border-left: none;
 }
-.left-menu .menu-item > a:hover,
-.right-menu .menu-item > a:hover,
+.left-menu .menu-item > *:hover,
+.right-menu .menu-item > *:hover,
 .left-menu .active,
 .right-menu .active {
   background: #c8ccce;
@@ -580,4 +587,15 @@ abbr {
 .product .thumbnails .thumbnail {
     margin: 0 10px 0 0;
     border-radius: 0;
+}
+
+.languages {
+    cursor: pointer;
+}
+
+.languages .dropdown-menu {
+    border: none;
+    border-radius: 0;
+    padding: 5px 0 5px 5px;
+    min-width: 155px;
 }

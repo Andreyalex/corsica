@@ -79,11 +79,10 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
 				<?php } else { ?>
 					<li class="menu-item"><a href="<?php echo $login; ?>" class="btn btn-login"><?php echo $text_login; ?></a></li>
 					<li class="menu-item"><a href="<?php echo $register; ?>" class="btn btn-registration"><?php echo $text_register; ?></a></li>
-				<li class="menu-item">Icon</li>
-				<li class="menu-item">
-					<?php echo $language; ?>
-				</li>
 				<?php } ?>
+                <li class="menu-item">
+                    <?php echo $language; ?>
+                </li>
 			</ul>
 		</div>
         <div class="top-submenu">
