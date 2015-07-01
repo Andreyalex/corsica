@@ -6,6 +6,7 @@ class ControllerCommonSeoUrl extends Controller {
 			$this->url->addRewrite($this);
 		}
 
+        $route = !empty($this->request->get['_route_'])? $this->request->get['_route_'] : null;
 		// Decode URL
 		if (isset($this->request->get['_route_'])) {
 			$parts = array($this->request->get['_route_']); //explode('/', $this->request->get['_route_']);
@@ -53,9 +54,9 @@ class ControllerCommonSeoUrl extends Controller {
 
 			if (!isset($this->request->get['route'])) {
 				if (isset($this->request->get['product_id'])) {
-					$this->request->get['route'] = 'product/product';
+					$this->request->get['route'] = (strpos($route, 'collection') === false)? 'product/product' : 'collection/product';
 				} elseif (isset($this->request->get['path'])) {
-					$this->request->get['route'] = 'product/category';
+                    $this->request->get['route'] = (strpos($route, 'collection') === false)? 'product/category' : 'collection/category';
 				} elseif (isset($this->request->get['manufacturer_id'])) {
 					$this->request->get['route'] = 'product/manufacturer/info';
 				} elseif (isset($this->request->get['information_id'])) {
