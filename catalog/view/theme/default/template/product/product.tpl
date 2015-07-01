@@ -8,8 +8,8 @@
             <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
 
             <div class="col-2 product-image">
-                <?php if ($thumb) { ?>
-                    <a class="image-big">
+                <?php if ($thumb || $popup) { ?>
+                    <a class="image-big" href="<?php echo $popup; ?>">
                         <img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
                     </a>
                 <?php } ?>
@@ -17,7 +17,7 @@
                 <?php if ($images) { ?>
                     <div class="thumbnails">
                         <?php foreach ($images as $image) { ?>
-                            <a href="<?php echo $image['thumb']; ?>" class="col-4 image-thumbnail thumbnail">
+                            <a href="<?php echo $image['popup']; ?>" class="col-4 image-thumbnail thumbnail">
                                 <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
                             </a>
                         <?php } ?>
@@ -154,7 +154,7 @@ $('.size-items').on('click', function(ev) {
 
 
 $(document).ready(function() {
-    $('.thumbnails').magnificPopup({
+    $('.thumbnails, .product-image').magnificPopup({
         type:'image',
         delegate: 'a',
         gallery: {

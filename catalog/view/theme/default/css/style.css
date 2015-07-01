@@ -84,6 +84,9 @@ a,
   color: #000;
   text-decoration: none !important;
 }
+a:focus {
+    outline: none;
+}
 .form-group {
   margin-bottom: 15px;
 }
@@ -566,4 +569,15 @@ abbr {
 }
 #cart .dropdown-menu li p {
     margin: 20px 0;
+}
+
+
+.product .thumbnails {
+    padding: 10px 0 10px 0;
+    overflow: hidden;
+}
+
+.product .thumbnails .thumbnail {
+    margin: 0 10px 0 0;
+    border-radius: 0;
 }
