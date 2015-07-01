@@ -59,7 +59,7 @@ class ModelCatalogProduct extends Model {
                 from '.DB_PREFIX.'product_option_value as pov
                 join '.DB_PREFIX.'option_value as ov on ov.option_value_id = pov.option_value_id
                 join '.DB_PREFIX.'option_value_description as ovd on ovd.option_value_id = pov.option_value_id
-                where pov.product_id = '.(int)$product_id.' and ovd.language_id='.$langId.
+                where pov.product_id = '.(int)$product_id.' and pov.quantity > 0 and ovd.language_id='.$langId.
                 ' order by ov.sort_order'
             );
 
