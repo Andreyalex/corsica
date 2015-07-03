@@ -4,6 +4,9 @@ class ControllerProductProduct extends Controller {
 
 	public function index() {
 
+        $this->checkAsset('shop');
+        $this->checkAccess(array('area' => 'shop'));
+
         $this->load->language('product/product');
 
         $data['breadcrumbs'] = array();
@@ -31,7 +34,9 @@ class ControllerProductProduct extends Controller {
                     $path .= '_' . $path_id;
                 }
 
-                $category_info = $this->model_catalog_category->getCategory($path_id);
+                $category_info = $this->model_catalog_category->getCategory($path_id, true);
+
+                if ($category_info['path'][0] != CorsicaConfig::CATEGORY_SHOP_ROOT_ID);
 
                 if ($category_info) {
                     $data['breadcrumbs'][] = array(
@@ -159,9 +164,12 @@ class ControllerProductProduct extends Controller {
 
         $this->load->model('catalog/product');
 
-        $product_info = $this->model_catalog_product->getProduct($product_id);
+        $product_info = $this->model_catalog_product->getProduct($product_id, true);
 
         if ($product_info) {
+
+
+
             $url = '';
 
             if (isset($this->request->get['path'])) {
@@ -567,6 +575,9 @@ class ControllerProductProduct extends Controller {
 
 		$this->load->model('catalog/review');
 
+        $this->checkAsset('shop');
+        $this->checkAccess(array('area' => 'shop'));
+
 		$data['text_no_reviews'] = $this->language->get('text_no_reviews');
 
 		if (isset($this->request->get['page'])) {
@@ -610,7 +621,10 @@ class ControllerProductProduct extends Controller {
 	public function write() {
 		$this->load->language('product/product');
 
-		$json = array();
+        $this->checkAsset('shop');
+        $this->checkAccess(array('area' => 'shop'));
+
+        $json = array();
 
 		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
 			if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 25)) {
@@ -652,7 +666,10 @@ class ControllerProductProduct extends Controller {
 		$this->language->load('product/product');
 		$this->load->model('catalog/product');
 
-		if (isset($this->request->post['product_id'])) {
+        $this->checkAsset('shop');
+        $this->checkAccess(array('area' => 'shop'));
+
+        if (isset($this->request->post['product_id'])) {
 			$product_id = $this->request->post['product_id'];
 		} else {
 			$product_id = 0;

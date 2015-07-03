@@ -10,6 +10,9 @@ class ControllerProductCategory extends Controller {
 
         $this->load->model('tool/image');
 
+        $this->checkAsset('shop');
+        $this->checkAccess(array('area' => 'shop'));
+
         if (isset($this->request->get['filter'])) {
             $filter = $this->request->get['filter'];
         } else {
