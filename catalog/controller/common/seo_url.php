@@ -6,7 +6,6 @@ class ControllerCommonSeoUrl extends Controller {
 			$this->url->addRewrite($this);
 		}
 
-        $route = !empty($this->request->get['_route_'])? $this->request->get['_route_'] : null;
 		// Decode URL
 		if (isset($this->request->get['_route_'])) {
 			$parts = array($this->request->get['_route_']); //explode('/', $this->request->get['_route_']);
@@ -54,9 +53,21 @@ class ControllerCommonSeoUrl extends Controller {
 
 			if (!isset($this->request->get['route'])) {
 				if (isset($this->request->get['product_id'])) {
-					$this->request->get['route'] = (strpos($route, 'collection') === false)? 'product/product' : 'collection/product';
+                    if (!isset($this->request->get['path'])) {
+                        $this->load->model('catalog/product');
+                        $product = $this->model_catalog_product->getProduct($this->request->get['product_id'], true);
+                        $catId = $product['categories'][0]['category_id'];
+                    } else {
+                        $catId = $this->request->get['path'];
+                    }
+                    $this->load->model('catalog/category');
+                    $category = $this->model_catalog_category->getCategory($catId, true);
+                    $this->request->get['route'] = $category['path'][0]['path_id'] == CorsicaConfig::CATEGORY_COLLECTION_ROOT_ID? 'collection/product' : 'product/product';
 				} elseif (isset($this->request->get['path'])) {
-                    $this->request->get['route'] = (strpos($route, 'collection') === false)? 'product/category' : 'collection/category';
+                    $this->request->get['category_id'] = $this->request->get['path'];
+                    $this->load->model('catalog/category');
+                    $category = $this->model_catalog_category->getCategory($this->request->get['category_id'], true);
+                    $this->request->get['route'] = $category['path'][0]['path_id'] == CorsicaConfig::CATEGORY_COLLECTION_ROOT_ID? 'collection/category' : 'product/category';
 				} elseif (isset($this->request->get['manufacturer_id'])) {
 					$this->request->get['route'] = 'product/manufacturer/info';
 				} elseif (isset($this->request->get['information_id'])) {
