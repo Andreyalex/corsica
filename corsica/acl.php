@@ -2,60 +2,34 @@
 
 class CorsicaAcl
 {
-    public $request = null;
+    public $registry;
 
-    static public $acl = array(
-        CorsicaConfig::CUSTOMER_GROUP_GUEST => array(
-            'route=collection/category' => array()
-        ),
-        CorsicaConfig::CUSTOMER_GROUP_USER => array(
-            'route=collection/category' => array()
-        ),
-        CorsicaConfig::CUSTOMER_GROUP_BUYER => array(
-        )
-    );
-
-
-    public function isAuthorized($userGroup, $action = 'view', $resource = null)
+    public function __construct($registry)
     {
-        $currResource = $resource? $resource : $this->getCurrentResource();
+        $this->registry = $registry;
+    }
 
+    /**
+     * @param $userGroup
+     * @param $resource array with essential resource fields
+     * @param string $action
+     * @return bool
+     */
+    public function isAuthorized($userGroup, $resource, $action = 'view')
+    {
         $userGroup = (int) $userGroup;
 
         $isAuthorized = true;
-        foreach (self::$acl[$userGroup] as $aclResource => $permissions) {
-            if (strpos($currResource, $aclResource) === 0) {
-                $isAuthorized = in_array($action, $permissions);
-                break;
+        foreach (CorsicaConfig::$acl[$userGroup] as $item) {
+            foreach ($item['resource'] as $key => $val) {
+                if ($resource[$key] != $val) {
+                    continue 2;
+                }
             }
+            $isAuthorized = in_array($action, $item['permissions']);
+            break;
         }
+
         return $isAuthorized;
-    }
-
-
-    public function getCurrentResource()
-    {
-        $uid = array();
-        $container = !empty($this->request->post)? $this->request->post : $this->request->get;
-        switch (true) {
-            case !empty($container['_route_']):
-                $uid['route'] = $container['_route_'];
-                break;
-            case !empty($container['route']):
-                $uid['route'] = $container['route'];
-                break;
-        }
-
-        if (!empty($container['category_id'])) {
-            $uid['category_id'] = $container['category_id'];
-        } elseif (!empty($container['path'])) {
-            $uid['category_id'] = $container['path'];
-        }
-
-        $res = array();
-        foreach($uid as $key => $value) {
-            $res[] = join('=', array($key, $value));
-        }
-        return join('&', $res);
     }
 }

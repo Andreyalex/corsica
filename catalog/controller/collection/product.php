@@ -6,6 +6,9 @@ class ControllerCollectionProduct extends Controller {
 
         $this->load->language('collection/product');
 
+        $this->checkAsset('collection');
+        $this->checkAccess(array('area' => 'collection'));
+
         $data['breadcrumbs'] = array();
 
         $data['breadcrumbs'][] = array(
@@ -567,6 +570,9 @@ class ControllerCollectionProduct extends Controller {
 
 		$this->load->model('catalog/review');
 
+        $this->checkAsset('collection');
+        $this->checkAccess(array('area' => 'collection'));
+
 		$data['text_no_reviews'] = $this->language->get('text_no_reviews');
 
 		if (isset($this->request->get['page'])) {
@@ -610,6 +616,9 @@ class ControllerCollectionProduct extends Controller {
 	public function write() {
 		$this->load->language('collection/product');
 
+        $this->checkAsset('collection');
+        $this->checkAccess(array('area' => 'collection'));
+
 		$json = array();
 
 		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
@@ -651,6 +660,9 @@ class ControllerCollectionProduct extends Controller {
 	public function getRecurringDescription() {
 		$this->language->load('collection/product');
 		$this->load->model('catalog/product');
+
+        $this->checkAsset('collection');
+        $this->checkAccess(array('area' => 'collection'));
 
 		if (isset($this->request->post['product_id'])) {
 			$product_id = $this->request->post['product_id'];

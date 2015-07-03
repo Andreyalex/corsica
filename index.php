@@ -245,13 +245,6 @@ $controller->addPreAction(new Action('common/maintenance'));
 // SEO URL's
 $controller->addPreAction(new Action('common/seo_url'));
 
-$acl = new CorsicaAcl($request);
-$acl->request = $request;
-$isAuthorized = $acl->isAuthorized($customer->getGroupId(), 'view');
-if (!$isAuthorized) {
-    $response->redirect('?route=account/login');
-}
-
 // Router
 if (isset($request->get['route'])) {
 	$action = new Action($request->get['route']);

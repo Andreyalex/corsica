@@ -10,6 +10,9 @@ class ControllerCollectionCategory extends Controller {
 
         $this->load->model('tool/image');
 
+        $this->checkAsset('collection');
+        $this->checkAccess(array('area' => 'collection'));
+
         if (isset($this->request->get['filter'])) {
             $filter = $this->request->get['filter'];
         } else {

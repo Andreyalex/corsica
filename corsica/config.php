@@ -25,5 +25,27 @@ class CorsicaConfig
     const CUSTOMER_GROUP_GUEST = 0;
     const CUSTOMER_GROUP_BUYER = 1;
     const CUSTOMER_GROUP_USER  = 2;
+
+    const CATEGORY_COLLECTION_ROOT_ID = 61;
+    const CATEGORY_SHOP_ROOT_ID = 60;
+
+
+
+    static public $acl = array(
+        CorsicaConfig::CUSTOMER_GROUP_GUEST => array(
+            array(
+                'resource' => array('area' => 'collection'),
+                'permissions' => array()
+            )
+        ),
+        CorsicaConfig::CUSTOMER_GROUP_USER => array(
+            array(
+                'resource' => array('area' => 'collection'),
+                'permissions' => array()
+            )
+        ),
+        CorsicaConfig::CUSTOMER_GROUP_BUYER => array(
+        )
+    );
 }
 

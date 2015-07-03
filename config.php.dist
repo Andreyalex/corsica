@@ -25,17 +25,3 @@ define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '7117407');
 define('DB_DATABASE', 'corsica.dev');
 define('DB_PREFIX', 'cs_');
-
-class CorsicaConfig
-{
-    const PRODUCT_OPTION_SIZE_ID = 11;
-    const PRODUCT_OPTION_COLOR_ID = 1;
-
-    static public $productOptionColorMap = array(
-        49 => 'white',
-        43 => 'gold',
-        31 => 'red',
-        32 => 'black'
-    );
-}
-
