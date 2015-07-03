@@ -65,6 +65,15 @@ class ModelCatalogProduct extends Model {
 
             $product['options'] = $options->rows;
 
+            $categories = $this->db->query('
+                select *
+                from '.DB_PREFIX.'product_to_category as ptc
+                join '.DB_PREFIX.'category as c on c.category_id = ptc.category_id
+                where ptc.product_id = '.(int)$product_id
+            );
+
+            $product['categories'] = $categories->rows;
+
             return $product;
 
 		} else {
