@@ -292,6 +292,18 @@ abbr {
 }
 /* Header
 =====================================*/
+#logo {
+    padding: 0 10px;
+}
+
+#logo > img {
+    padding: 0;
+}
+
+.breadcrumb {
+    display: none;
+}
+
 .navbar-top {
   height: 80px;
 }
@@ -596,6 +608,7 @@ abbr {
 .languages .dropdown-menu {
     border: none;
     border-radius: 0;
-    padding: 5px 0 5px 5px;
-    min-width: 155px;
+    padding: 0;
+    min-width: 152px;
+    margin: 2px 2px 0 0;
 }

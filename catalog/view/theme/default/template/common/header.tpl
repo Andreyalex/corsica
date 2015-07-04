@@ -62,7 +62,11 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
 	<nav class="navbar-top">
 		<div class="top-menu">
 			<ul class="left-menu">
-				<li class="menu-item"><a href="/"><img src="<?php echo $theme; ?>/image/icon-logo.png"></a></li>
+				<li class="menu-item">
+                    <a id="logo" href="/">
+                        <img src="<?php echo $theme; ?>/image/icon-logo.png">
+                    </a>
+                </li>
 
 				<?php foreach ($informations as $information) { ?>
 					<li class="menu-item"><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
