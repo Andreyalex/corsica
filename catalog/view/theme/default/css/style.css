@@ -612,3 +612,12 @@ abbr {
     min-width: 152px;
     margin: 2px 2px 0 0;
 }
+
+.form-horizontal .form-group > input.form-control,
+.form-horizontal .form-group > select.form-control {
+    width: 79%;
+    float: right;
+}
+.form-horizontal .form-group > .control-label {
+    width: 19%;
+}
