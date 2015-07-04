@@ -477,6 +477,14 @@ class ControllerCollectionProduct extends Controller {
             $data['footer'] = $this->load->controller('common/footer');
             $data['header'] = $this->load->controller('common/header');
 
+            $customer = $this->registry->get('customer');
+            $this->load->model('account/customer');
+            $customer = $this->model_account_customer->getCustomer($customer->getId());
+            $data['customer_custom_fields'] = unserialize($customer['custom_field']);
+            $data['show_price_to_customer'] =
+                empty($data['customer_custom_fields'][CorsicaConfig::CUSTOMER_SHOW_COLLECTION_PRICE_ID]) ||
+                $data['customer_custom_fields'][CorsicaConfig::CUSTOMER_SHOW_COLLECTION_PRICE_ID] == CorsicaConfig::CUSTOMER_SHOW_COLLECTION_PRICE_YES_ID;
+
             if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/collection/product.tpl')) {
                 $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/collection/product.tpl', $data));
             } else {

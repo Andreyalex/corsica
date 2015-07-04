@@ -29,7 +29,9 @@ class CorsicaConfig
     const CATEGORY_COLLECTION_ROOT_ID = 61;
     const CATEGORY_SHOP_ROOT_ID = 60;
 
-
+    const CUSTOMER_SHOW_COLLECTION_PRICE_ID = 1;
+    const CUSTOMER_SHOW_COLLECTION_PRICE_YES_ID = 1;
+    const CUSTOMER_SHOW_COLLECTION_PRICE_NO_ID = 2;
 
     static public $acl = array(
         CorsicaConfig::CUSTOMER_GROUP_GUEST => array(

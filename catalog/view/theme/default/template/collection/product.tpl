@@ -74,7 +74,7 @@
                             </div>
                         <?php } ?>
                     <?php } ?>
-                    <?php if ($price) { ?>
+                    <?php if ($price && $show_price_to_customer) { ?>
                         <ul class="list-unstyled">
                             <?php if (!$special) { ?>
                                 <li>
