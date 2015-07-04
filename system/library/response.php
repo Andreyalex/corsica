@@ -8,7 +8,10 @@ class Response {
 		$this->headers[] = $header;
 	}
 
-	public function redirect($url, $status = 302) {
+	public function redirect($url, $status = 302, $returnUrl = false) {
+        if (strpos($url, 'account/login') !== false) {
+            $_SESSION['returnUrl'] = $_SERVER['REQUEST_URI'];
+        }
 		header('Location: ' . str_replace(array('&amp;', "\n", "\r"), array('&', '', ''), $url), true, $status);
 		exit();
 	}

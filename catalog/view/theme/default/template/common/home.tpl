@@ -12,7 +12,7 @@
 		</div>
 	</a>
 	<?php } else { ?>
-	<a href="index.php?route=account/register">
+	<a href="<?php echo $category['href']; ?>">
 		<div class="col-2 collection">
 			<img src="<?php echo $category['image']; ?>" alt="<?php echo $category['name']; ?>"/>
 			<div class="inner fade">

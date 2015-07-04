@@ -81,8 +81,12 @@ class ControllerAccountLogin extends Controller {
 			// Added strpos check to pass McAfee PCI compliance test (http://forum.opencart.com/viewtopic.php?f=10&t=12043&p=151494#p151295)
 			if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
 				$this->response->redirect(str_replace('&amp;', '&', $this->request->post['redirect']));
-			} else {
-				$this->response->redirect($this->url->link('account/account', '', 'SSL'));
+			} elseif (!empty($_SESSION['returnUrl'])) {
+                $url = $_SESSION['returnUrl'];
+                unset($_SESSION['returnUrl']);
+                $this->response->redirect($url);
+            } else {
+                $this->response->redirect('/');
 			}
 		}
 
