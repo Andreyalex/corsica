@@ -22,15 +22,6 @@
             </div>
 
             <div class="form-group required">
-                <label class="control-label" for="input-lastname"><?php echo $entry_lastname; ?> <abbr>*</abbr></label>
-
-                <input type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="<?php echo $entry_lastname; ?>" id="input-lastname" class="form-control"/>
-                <?php if ($error_lastname) { ?>
-                    <div class="text-danger"><?php echo $error_lastname; ?></div>
-                <?php } ?>
-            </div>
-
-            <div class="form-group required">
                 <label class="control-label" for="input-email"><?php echo $entry_email; ?> <abbr>*</abbr></label>
                 <input type="email" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control"/>
                 <?php if ($error_email) { ?>
@@ -63,32 +54,6 @@
             </div>
 
             <div class="form-group required">
-                <label class="control-label" for="input-country"><?php echo $entry_country; ?> <abbr>*</abbr></label>
-                <select name="country_id" id="input-country" class="form-control">
-                    <option value=""><?php echo $text_select; ?></option>
-                    <?php foreach ($countries as $country) { ?>
-                    <?php if ($country['country_id'] == $country_id) { ?>
-                    <option value="<?php echo $country['country_id']; ?>"
-                            selected="selected"><?php echo $country['name']; ?></option>
-                    <?php } else { ?>
-                    <option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
-                    <?php } ?>
-                    <?php } ?>
-                </select>
-                <?php if ($error_country) { ?>
-                    <div class="text-danger"><?php echo $error_country; ?></div>
-                <?php } ?>
-            </div>
-
-            <div class="form-group required">
-                <label class="control-label" for="input-zone"><?php echo $entry_zone; ?> <abbr>*</abbr></label>
-                <select name="zone_id" id="input-zone" class="form-control"></select>
-                <?php if ($error_zone) { ?>
-                    <div class="text-danger"><?php echo $error_zone; ?></div>
-                <?php } ?>
-            </div>
-
-            <div class="form-group required">
                 <label class="control-label" for="input-city"><?php echo $entry_city; ?> <abbr>*</abbr></label>
                 <input type="text" name="city" value="<?php echo $city; ?>" placeholder="<?php echo $entry_city; ?>" id="input-city" class="form-control"/>
                 <?php if ($error_city) { ?>
@@ -96,31 +61,41 @@
                 <?php } ?>
             </div>
 
-            <div class="form-group required">
-                <label class="control-label" for="input-address-1"><?php echo $entry_address_1; ?> <abbr>*</abbr></label>
-                <input type="text" name="address_1" value="<?php echo $address_1; ?>" placeholder="<?php echo $entry_address_1; ?>" id="input-address-1" class="form-control"/>
-                <?php if ($error_address_1) { ?>
-                    <div class="text-danger"><?php echo $error_address_1; ?></div>
+<!--            <div class="form-group required">-->
+<!--                <label class="control-label" for="select-activity">Вид деятельности <abbr>*</abbr></label>-->
+<!--                <select name="activity" class="form-control">-->
+<!--                    <option value="0" >Розница</option>-->
+<!--                    <option value="1" >Оптовы закупки</option>-->
+<!--                </select>-->
+<!--            </div>-->
+
+<!--            <div class="form-group required">-->
+<!--                <label class="control-label" for="input-magazine">Название магазина <abbr>*</abbr></label>-->
+<!--                <input disabled type="text" name="magazine" value="" placeholder="Название магазина" id="input-magazine" class="form-control"/>-->
+<!--            </div>-->
+
+            <?php foreach ($custom_fields as $custom_field) { ?>
+                <?php if ($custom_field['location'] == 'account') { ?>
+                    <?php if ($custom_field['type'] == 'select') { ?>
+                        <div id="custom-field<?php echo $custom_field['custom_field_id']; ?>" class="form-group custom-field" data-sort="<?php echo $custom_field['sort_order']; ?>">
+                            <label class="control-label" for="input-custom-field<?php echo $custom_field['custom_field_id']; ?>"><?php echo $custom_field['name']; ?></label>
+                            <select name="custom_field[<?php echo $custom_field['location']; ?>][<?php echo $custom_field['custom_field_id']; ?>]" id="input-custom-field<?php echo $custom_field['custom_field_id']; ?>" class="form-control">
+                                <option value=""><?php echo $text_select; ?></option>
+                                <?php foreach ($custom_field['custom_field_value'] as $custom_field_value) { ?>
+                                    <?php if (isset($register_custom_field[$custom_field['custom_field_id']]) && $custom_field_value['custom_field_value_id'] == $register_custom_field[$custom_field['custom_field_id']]) { ?>
+                                        <option value="<?php echo $custom_field_value['custom_field_value_id']; ?>" selected="selected"><?php echo $custom_field_value['name']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="<?php echo $custom_field_value['custom_field_value_id']; ?>"><?php echo $custom_field_value['name']; ?></option>
+                                    <?php } ?>
+                                <?php } ?>
+                            </select>
+                            <?php if (isset($error_custom_field[$custom_field['custom_field_id']])) { ?>
+                                <div class="text-danger"><?php echo $error_custom_field[$custom_field['custom_field_id']]; ?></div>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
                 <?php } ?>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label" for="input-company"><?php echo $entry_company; ?></label>
-                <input type="text" name="company" value="<?php echo $company; ?>" placeholder="<?php echo $entry_company; ?>" id="input-company" class="form-control"/>
-            </div>
-
-            <div class="form-group required">
-                <label class="control-label" for="select-activity">Вид деятельности <abbr>*</abbr></label>
-                <select name="activity" class="form-control">
-                    <option value="0" >Розница</option>
-                    <option value="1" >Оптовы закупки</option>
-                </select>
-            </div>
-
-            <div class="form-group required">
-                <label class="control-label" for="input-magazine">Название магазина <abbr>*</abbr></label>
-                <input disabled type="text" name="magazine" value="" placeholder="Название магазина" id="input-magazine" class="form-control"/>
-            </div>
+            <?php } ?>
 
             <?php if ($text_agree) { ?>
             <div class="buttons">

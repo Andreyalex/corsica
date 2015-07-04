@@ -621,3 +621,8 @@ abbr {
 .form-horizontal .form-group > .control-label {
     width: 19%;
 }
+
+.form-horizontal .form-group > .text-danger {
+    margin-left: 22%;
+    clear: both;
+}
