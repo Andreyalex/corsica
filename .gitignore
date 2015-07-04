@@ -2,8 +2,6 @@
 .gitignore
 /config.php
 /admin/config.php
-/image/catalog/*
-!/image/catalog/index.html
 /image/cache/*
 !/image/cache/index.html
 /system/cache/*
