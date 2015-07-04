@@ -60,14 +60,15 @@
                                 <div style="overflow: hidden">
                                     <div class="table-size readonly">
                                         <?php foreach (CorsicaConfig::$productOptionSizeMap as $name => $sizeArray) { ?>
-                                            <?php $hit = false; foreach ($option['product_option_value'] as $option_value) { ?>
-                                                <?php if ($option_value['name'] == $name) { $hit = true; break; } ?>
+                                            <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                                                <?php if ($option_value['name'] == $name) { ?>
+                                                    <div class="size-items">
+                                                        <div class="size-item"><?php echo $sizeArray[0]; ?></div>
+                                                        <div class="size-item"><?php echo $sizeArray[1]; ?></div>
+                                                        <div class="size-item"><?php echo $sizeArray[2]; ?></div>
+                                                    </div>
+                                                <?php break; } ?>
                                             <?php } ?>
-                                            <div class="size-items<?php echo $hit? '':' disabled';?>">
-                                                <div class="size-item"><?php echo $sizeArray[0]; ?></div>
-                                                <div class="size-item"><?php echo $sizeArray[1]; ?></div>
-                                                <div class="size-item"><?php echo $sizeArray[2]; ?></div>
-                                            </div>
                                         <?php } ?>
                                     </div>
                                 </div>

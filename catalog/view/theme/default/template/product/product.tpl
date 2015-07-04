@@ -60,15 +60,16 @@
                                 <div id="input-option<?php echo $option['product_option_id']; ?>" style="overflow: hidden">
                                     <div class="table-size">
                                         <?php foreach (CorsicaConfig::$productOptionSizeMap as $name => $sizeArray) { ?>
-                                            <?php $hit = false; foreach ($option['product_option_value'] as $option_value) { ?>
-                                                <?php if ($option_value['name'] == $name) { $hit = true; break; } ?>
+                                            <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                                                <?php if ($option_value['name'] == $name) { ?>
+                                                    <div class="size-items">
+                                                        <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" style="display: none;" />
+                                                        <div class="size-item"><?php echo $sizeArray[0]; ?></div>
+                                                        <div class="size-item"><?php echo $sizeArray[1]; ?></div>
+                                                        <div class="size-item"><?php echo $sizeArray[2]; ?></div>
+                                                    </div>
+                                                <?php break; } ?>
                                             <?php } ?>
-                                            <div class="size-items<?php echo $hit? '':' disabled';?>">
-                                                <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" style="display: none;" />
-                                                <div class="size-item"><?php echo $sizeArray[0]; ?></div>
-                                                <div class="size-item"><?php echo $sizeArray[1]; ?></div>
-                                                <div class="size-item"><?php echo $sizeArray[2]; ?></div>
-                                            </div>
                                         <?php } ?>
                                     </div>
                                 </div>
