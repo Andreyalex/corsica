@@ -39,12 +39,22 @@
                         <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_COLOR_ID) { ?>
                             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>" style="overflow: hidden">
                                 <label class="control-label"><?php echo $option['name']; ?></label>
-                                <div id="input-option<?php echo $option['product_option_id']; ?>" style="overflow: hidden">
+                                <div id="input-option<?php echo $option['product_option_id']; ?>" style="overflow: hidden" class="options-color">
                                     <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                                        <div style="float:left;">
+                                        <div
+                                            class="item"
+                                            style="float:left;"
+                                            <?php if (!empty($option_value['image'])) { ?>
+                                                data-toggle="tooltip"
+                                                data-title="<img src='<?php echo $option_value['image']?>'>"
+                                                data-html="true"
+                                                data-placement="auto bottom"
+                                                data-delay="400"
+                                            <?php } ?>
+                                        >
                                             <label class="color-item">
+                                                <div class="color-box <?php echo CorsicaConfig::$productOptionColorMap[$option_value['option_value_id']]; ?>"></div>
                                                 <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
-                                                <span class="color-box <?php echo CorsicaConfig::$productOptionColorMap[$option_value['option_value_id']]; ?>"></span>
                                             </label>
                                         </div>
                                     <?php } ?>
@@ -71,6 +81,11 @@
                                                 <?php break; } ?>
                                             <?php } ?>
                                         <?php } ?>
+                                        <div class="size-headers">
+                                            <div class="size-item">WORLD</div>
+                                            <div class="size-item">EUR</div>
+                                            <div class="size-item">UKR / RUS</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -192,6 +207,8 @@ $(document).ready(function() {
             enabled:true
         }
     });
+
+    $('.options-color .item').tooltip({ container: 'body' });
 });
 
 </script>

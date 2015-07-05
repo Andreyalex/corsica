@@ -197,6 +197,16 @@ abbr {
   border: 1px solid #ffffff;
   box-sizing: border-box;
 }
+.color-item {
+    text-align: center;
+    margin: 10px;
+}
+
+
+.color-item .color-box {
+    display: block;
+}
+
 .table-size {
   border: none;
 }
@@ -211,7 +221,8 @@ abbr {
   text-align: center;
   background: #c8ccce;
 }
-.table-size .size-items {
+.table-size .size-items,
+.table-size .size-headers {
     float: left;
     overflow: hidden;
     margin-left: 1px;
@@ -239,6 +250,9 @@ abbr {
     color: #c8ccce;
 }
 
+.table-size .size-headers .size-item {
+    font-weight: bold;
+}
 .table-size .size-item {
     margin: 1px;
 }
@@ -248,7 +262,7 @@ abbr {
 
 .table-size.readonly .size-items,
 .table-size.readonly .size-items:hover {
-    cursor: pointer;
+    cursor: default;
     background: none;
 }
 
@@ -626,3 +640,18 @@ abbr {
     margin-left: 22%;
     clear: both;
 }
+
+.tooltip.in {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.tooltip .tooltip-inner {
+    max-width: 320px;
+}
+
+.tooltip img {
+    width: 300px;
+    height: 200px;
+}
+
