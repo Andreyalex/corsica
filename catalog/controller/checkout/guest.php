@@ -173,6 +173,8 @@ class ControllerCheckoutGuest extends Controller {
 
 		$json = array();
 
+        CorsicaHelper::addAbsentCustomerFields($this->request);
+
 		// Validate if customer is logged in.
 		if ($this->customer->isLogged()) {
 			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
@@ -247,6 +249,8 @@ class ControllerCheckoutGuest extends Controller {
 				}
 			}
 		}
+
+        CorsicaHelper::suppressErrorsOFAbsentCustomerFields($json);
 
 		if (!$json) {
 			$this->session->data['account'] = 'guest';

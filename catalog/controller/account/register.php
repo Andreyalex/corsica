@@ -15,14 +15,7 @@ class ControllerAccountRegister extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 
-            $this->request->post['lastname'] = null;
-            $this->request->post['company'] = null;
-            $this->request->post['address_1'] = null;
-            $this->request->post['address_2'] = null;
-            $this->request->post['postcode'] = null;
-            $this->request->post['country_id'] = null;
-            $this->request->post['zone_id'] = null;
-            $this->request->post['fax'] = null;
+            CorsicaHelper::addAbsentCustomerFields($this->request);
 
             $customer_id = $this->model_account_customer->addCustomer($this->request->post);
 			
