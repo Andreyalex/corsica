@@ -48,7 +48,7 @@
                                             data-title="<img src='<?php echo $option_value['image']?>'>"
                                             data-html="true"
                                             data-placement="auto bottom"
-                                            data-delay="400"
+                                            data-delay="300"
                                             <?php } ?>
                                         >
                                             <label class="color-item">

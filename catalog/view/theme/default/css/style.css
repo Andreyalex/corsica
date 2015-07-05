@@ -190,20 +190,22 @@ abbr {
 .fade:hover {
   opacity: 1;
 }
-.color-box {
-  display: inline-block;
+
+.color-item .color-box {
   width: 20px;
   height: 20px;
   border: 1px solid #ffffff;
   box-sizing: border-box;
 }
-.color-item {
-    text-align: center;
-    margin: 10px;
+.catalog .color-item .color-box {
+    display: inline-block;
 }
 
-
-.color-item .color-box {
+.product .color-item {
+    text-align: center;
+    margin: 0 10px;
+}
+.product .color-item .color-box {
     display: block;
 }
 
@@ -652,6 +654,6 @@ abbr {
 
 .tooltip img {
     width: 300px;
-    height: 200px;
+    height: 150px;
 }
 
