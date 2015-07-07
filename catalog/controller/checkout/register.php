@@ -3,6 +3,8 @@ class ControllerCheckoutRegister extends Controller {
 	public function index() {
 		$this->load->language('checkout/checkout');
 
+        CorsicaHelper::addAbsentCustomerFields($this->request);
+
 		$data['text_checkout_payment_address'] = $this->language->get('text_checkout_payment_address');
 		$data['text_your_details'] = $this->language->get('text_your_details');
 		$data['text_your_address'] = $this->language->get('text_your_address');
@@ -101,6 +103,8 @@ class ControllerCheckoutRegister extends Controller {
 	public function save() {
 		$this->load->language('checkout/checkout');
 
+        CorsicaHelper::addAbsentCustomerFields($this->request);
+
 		$json = array();
 
 		// Validate if customer is already logged out.
@@ -131,6 +135,8 @@ class ControllerCheckoutRegister extends Controller {
 				break;
 			}
 		}
+
+        CorsicaHelper::suppressErrorsOFAbsentCustomerFields($json);
 
 		if (!$json) {
 			$this->load->model('account/customer');
@@ -216,7 +222,9 @@ class ControllerCheckoutRegister extends Controller {
 			}
 		}
 
-		if (!$json) {
+        CorsicaHelper::suppressErrorsOFAbsentCustomerFields($json);
+
+        if (!$json) {
 			$customer_id = $this->model_account_customer->addCustomer($this->request->post);
 			
 			// Clear any previous login attempts for unregistered accounts.

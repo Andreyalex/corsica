@@ -36,6 +36,10 @@
         <label class="control-label" for="input-payment-telephone"><?php echo $entry_telephone; ?></label>
         <input type="text" name="telephone" value="<?php echo $telephone; ?>" placeholder="<?php echo $entry_telephone; ?>" id="input-payment-telephone" class="form-control" />
       </div>
+      <div class="form-group required">
+        <label class="control-label" for="input-payment-city"><?php echo $entry_city; ?></label>
+        <input type="text" name="city" value="<?php echo $city; ?>" placeholder="<?php echo $entry_city; ?>" id="input-payment-city" class="form-control" />
+      </div>
 <!--      <div class="form-group">-->
 <!--        <label class="control-label" for="input-payment-fax">--><?php //echo $entry_fax; ?><!--</label>-->
 <!--        <input type="text" name="fax" value="--><?php //echo $fax; ?><!--" placeholder="--><?php //echo $entry_fax; ?><!--" id="input-payment-fax" class="form-control" />-->

@@ -1,4 +1,16 @@
 <?php
+
+/**
+ * @property Request $request
+ * @property Response $response
+ * @property Language $language
+ * @property Customer $customer
+ * @property Url $url
+ * @property Loader $load
+ * @property Config $config
+ * @property Session $session
+ * @property Cart $cart
+ */
 abstract class Controller {
 	protected $registry;
 
