@@ -130,9 +130,7 @@
                 </div>
 
                 <div class="product-add">
-
                     <button id="button-cart" class="btn btn-default">Добавить в корзину</button>
-                    <button class="btn btn-default">Сделать заказ</button>
                 </div>
             </div>
         </div>

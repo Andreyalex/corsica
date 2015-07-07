@@ -29,16 +29,7 @@
             <div class="panel-body"></div>
           </div>
         </div>
-        <?php if (!$logged && $account != 'guest') { ?>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title"><?php echo $text_checkout_account; ?></h4>
-          </div>
-          <div class="panel-collapse collapse" id="collapse-payment-address">
-            <div class="panel-body"></div>
-          </div>
-        </div>
-        <?php } else { ?>
+        <?php if (!$logged && $account == 'guest') { ?>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title"><?php echo $text_checkout_payment_address; ?></h4>
@@ -123,14 +114,16 @@ $(document).ready(function() {
 <?php } else { ?>
 $(document).ready(function() {
     $.ajax({
-        url: 'index.php?route=checkout/payment_address',
+        url: 'index.php?route=checkout/payment_method',
         dataType: 'html',
         success: function(html) {
-            $('#collapse-payment-address .panel-body').html(html);
+            $('#collapse-payment-method .panel-body').html(html);
 
-			$('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle"><?php echo $text_checkout_payment_address; ?> <i class="fa fa-caret-down"></i></a>');
+            $('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('<a href="#collapse-payment-method" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle"><?php echo $text_checkout_payment_method; ?> <i class="fa fa-caret-down"></i></a>');
 
-			$('a[href=\'#collapse-payment-address\']').trigger('click');
+            $('a[href=\'#collapse-payment-method\']').trigger('click');
+
+            $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_confirm; ?>');
         },
         error: function(xhr, ajaxOptions, thrownError) {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -142,7 +135,7 @@ $(document).ready(function() {
 // Checkout
 $(document).delegate('#button-account', 'click', function() {
     $.ajax({
-        url: 'index.php?route=checkout/' + $('input[name=\'account\']:checked').val(),
+        url: 'index.php?route=checkout/' + $('input[name=\'account\']').val(),
         dataType: 'html',
         beforeSend: function() {
         	$('#button-account').button('loading');
@@ -152,7 +145,7 @@ $(document).delegate('#button-account', 'click', function() {
         },
         success: function(html) {
             $('.alert, .text-danger').remove();
-
+console.log('gerger');
             $('#collapse-payment-address .panel-body').html(html);
 
 			if ($('input[name=\'account\']:checked').val() == 'register') {

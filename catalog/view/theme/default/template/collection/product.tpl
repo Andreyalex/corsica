@@ -68,15 +68,16 @@
                                 <label class="control-label"><?php echo 'Размерьі в ростовке'; ?></label>
                                 <div style="overflow: hidden">
                                     <div class="table-size readonly">
-                                        <?php foreach (CorsicaConfig::$productOptionSizeMap as $name => $sizeArray) { ?>
+                                        <?php $sizeSet = 0; foreach (CorsicaConfig::$productOptionSizeMap as $name => $sizeArray) { ?>
                                             <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                                                <?php if ($option_value['name'] == $name) { ?>
+                                                <?php if ($option_value['name'] == $name) { $sizeSet++; ?>
                                                     <div class="size-items">
                                                         <div class="size-item"><?php echo $sizeArray[0]; ?></div>
                                                         <div class="size-item"><?php echo $sizeArray[1]; ?></div>
                                                         <div class="size-item"><?php echo $sizeArray[2]; ?></div>
                                                     </div>
-                                                <?php break; } ?>
+                                                    <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>][]" value="<?php echo $option_value['product_option_value_id']; ?>" />
+                                                    <?php break; } ?>
                                             <?php } ?>
                                         <?php } ?>
                                         <div class="size-headers">
@@ -89,16 +90,21 @@
                             </div>
                         <?php } ?>
                     <?php } ?>
+                    <input type="hidden" name="option[sizeset]" value="<?php echo $sizeSet; ?>" />
                     <?php if ($price && $show_price_to_customer) { ?>
                         <ul class="list-unstyled">
                             <?php if (!$special) { ?>
                                 <li>
-                                    <h2><?php echo $price; ?></h2>
+                                    <br/>
+                                    <label>Цена за единицу товара в ростовке</label>
+                                    <h2 style="margin:0"><?php echo $price; ?></h2>
                                 </li>
                             <?php } else { ?>
                                 <li><span style="text-decoration: line-through;"><?php echo $price; ?></span></li>
                                 <li>
-                                    <h2><?php echo $special; ?></h2>
+                                    <br/>
+                                    <label>Цена за единицу товара в ростовке</label>
+                                    <h2 style="margin:0"><?php echo $special; ?></h2>
                                 </li>
                             <?php } ?>
                             <?php if ($tax) { ?>
@@ -127,9 +133,9 @@
                 </div>
 
                 <div class="product-add">
-
+                    <p>В корзине будет указана суммарная цена за ростовку.</p>
                     <button id="button-cart" class="btn btn-default">Добавить в корзину</button>
-                    <button class="btn btn-default">Сделать заказ</button>
+
                 </div>
             </div>
         </div>

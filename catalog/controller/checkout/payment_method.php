@@ -3,6 +3,25 @@ class ControllerCheckoutPaymentMethod extends Controller {
 	public function index() {
 		$this->load->language('checkout/checkout');
 
+        if ($this->customer->getId()) {
+            $this->session->data['payment_address'] = array(
+                'firstname' => $this->customer->getFirstName(),
+                'email' => $this->customer->getEmail(),
+                'telephone' => $this->customer->getTelephone(),
+                'city' => null,
+                'country_id' => null,
+                'zone_id' => null,
+                'lastname' => null,
+                'company' => null,
+                'address_1' => null,
+                'address_2' => null,
+                'postcode' => null,
+                'country' => null,
+                'address_format' => null,
+                'zone' => null
+            );
+        }
+
 		if (isset($this->session->data['payment_address'])) {
 			// Totals
 			$total_data = array();

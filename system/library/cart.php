@@ -239,7 +239,9 @@ class Cart {
 						$recurring = false;
 					}
 
-					$this->data[$key] = array(
+                    $sizeSet = empty($options['sizeset'])? 1 : $options['sizeset'];
+
+                    $this->data[$key] = array(
 						'key'             => $key,
 						'product_id'      => $product_query->row['product_id'],
 						'name'            => $product_query->row['name'],
@@ -252,8 +254,8 @@ class Cart {
 						'minimum'         => $product_query->row['minimum'],
 						'subtract'        => $product_query->row['subtract'],
 						'stock'           => $stock,
-						'price'           => ($price + $option_price),
-						'total'           => ($price + $option_price) * $quantity,
+						'price'           => ($price * $sizeSet + $option_price),
+						'total'           => ($price * $sizeSet + $option_price) * $quantity,
 						'reward'          => $reward * $quantity,
 						'points'          => ($product_query->row['points'] ? ($product_query->row['points'] + $option_points) * $quantity : 0),
 						'tax_class_id'    => $product_query->row['tax_class_id'],
@@ -265,6 +267,8 @@ class Cart {
 						'length_class_id' => $product_query->row['length_class_id'],
 						'recurring'       => $recurring
 					);
+
+
 				} else {
 					$this->remove($key);
 				}

@@ -1,5 +1,5 @@
 <form class="form-horizontal">
-  <?php if ($addresses) { ?>
+  <?php $addresses = null; if ($addresses) { ?>
   <div class="radio">
     <label>
       <input type="radio" name="shipping_address" value="existing" checked="checked" />

@@ -9,6 +9,7 @@ if (is_file('config.php')) {
 
 require_once('corsica/config.php');
 require_once('corsica/acl.php');
+require_once('corsica/helper.php');
 
 // Install
 if (!defined('DIR_APPLICATION')) {
