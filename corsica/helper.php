@@ -65,7 +65,7 @@ class CorsicaHelper
         $title = array();
         foreach($breadcrumbs as $key => $item) {
             if (!$key) continue; // skip home
-            $title[] = $item['text'];
+            $title[] = '<a href="'.$item['href'].'">'.$item['text'].'</a>';
         }
         return join($divider, $title);
     }
