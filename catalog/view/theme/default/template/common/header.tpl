@@ -68,6 +68,7 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
                         <img src="<?php echo $theme; ?>/image/icon-logo.png">
                     </a>
                 </li>
+                <!--{{pageTitle}}-->
 			</ul>
 			<ul class="right-menu">
                 <li class="menu-item">

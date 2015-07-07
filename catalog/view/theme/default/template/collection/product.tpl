@@ -1,6 +1,13 @@
-<?php echo $header; ?>
+<?php
 
-<div class="container">
+    $header = CorsicaHelper::renderPageTitle(
+        $header,
+        CorsicaHelper::createBreadcrumbsString($breadcrumbs)
+    );
+    echo $header;
+?>
+
+    <div class="container">
     <div id="content" class="product">
 
         <div class="group" id="product">

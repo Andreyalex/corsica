@@ -347,6 +347,7 @@ abbr {
 	width: 100%;
 	height: 40px;
 	background: #e3e5e6;
+    border-bottom: 1px solid #b3b3b6;
 }
 .top-menu .menu-item {
 	display: inline-block;
@@ -361,7 +362,7 @@ abbr {
 	line-height: 40px;
 	text-decoration: none;
 }
-.top-menu .menu-item > *:hover {
+.top-menu .menu-item:hover {
 	color: #7a797e;
 }
 .top-menu .menu-item > * > img {
@@ -381,12 +382,16 @@ abbr {
 .right-menu .menu-item:first-child {
 	border-left: none;
 }
-.left-menu .menu-item > *:hover,
-.right-menu .menu-item > *:hover,
+.left-menu .menu-item:hover,
+.right-menu .menu-item:hover,
 .left-menu .active,
 .right-menu .active {
 	background: #c8ccce;
 }
+.left-menu .menu-item.title:hover {
+    background: none;
+}
+
 .right-menu {
 	float: right;
 }

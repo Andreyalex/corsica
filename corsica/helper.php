@@ -47,5 +47,28 @@ class CorsicaHelper
             unset($errorArray['error']);
         }
     }
+
+    static public function renderPageTitle($header, $pageTitle)
+    {
+        if ($pageTitle) {
+            $header = str_replace(
+                '<!--{{pageTitle}}-->',
+                '<li class="menu-item title"><span>'.$pageTitle.'</span></li>',
+                $header
+            );
+        }
+        return $header;
+    }
+
+    static public function createBreadcrumbsString($breadcrumbs, $divider = '&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;')
+    {
+        $title = array();
+        foreach($breadcrumbs as $key => $item) {
+            if (!$key) continue; // skip home
+            $title[] = $item['text'];
+        }
+        return join($divider, $title);
+    }
+
 }
 

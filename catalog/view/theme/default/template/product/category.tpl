@@ -1,6 +1,12 @@
-<?php echo $header; ?>
+<?php
+    $header = CorsicaHelper::renderPageTitle(
+        $header,
+        CorsicaHelper::createBreadcrumbsString($breadcrumbs)
+    );
+    echo $header;
+?>
 
-<div id="content" class="catalog">
+    <div id="content" class="catalog">
 	<div class="group">
 		<?php foreach ($products as $product) { ?>
 	    	<a href="<?php echo $product['href']; ?>">
