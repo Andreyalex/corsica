@@ -46,7 +46,7 @@
             </div>
 
             <div class="form-group required">
-                <label class="col-sm-2 control-label" for="input-confirm"><?php echo $entry_confirm; ?> <abbr>*</abbr></label>
+                <label class="control-label" for="input-confirm"><?php echo $entry_confirm; ?> <abbr>*</abbr></label>
                 <input type="password" name="confirm" value="<?php echo $confirm; ?>" placeholder="<?php echo $entry_confirm; ?>" id="input-confirm" class="form-control"/>
                 <?php if ($error_confirm) { ?>
                     <div class="text-danger"><?php echo $error_confirm; ?></div>
@@ -60,19 +60,6 @@
                     <div class="text-danger"><?php echo $error_city; ?></div>
                 <?php } ?>
             </div>
-
-<!--            <div class="form-group required">-->
-<!--                <label class="control-label" for="select-activity">Вид деятельности <abbr>*</abbr></label>-->
-<!--                <select name="activity" class="form-control">-->
-<!--                    <option value="0" >Розница</option>-->
-<!--                    <option value="1" >Оптовы закупки</option>-->
-<!--                </select>-->
-<!--            </div>-->
-
-<!--            <div class="form-group required">-->
-<!--                <label class="control-label" for="input-magazine">Название магазина <abbr>*</abbr></label>-->
-<!--                <input disabled type="text" name="magazine" value="" placeholder="Название магазина" id="input-magazine" class="form-control"/>-->
-<!--            </div>-->
 
             <?php foreach ($custom_fields as $custom_field) { ?>
                 <?php if ($custom_field['location'] == 'account') { ?>

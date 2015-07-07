@@ -19,6 +19,7 @@
 <?php echo $column_left; ?>
 	<div id="content" class="login-form"><?php echo $content_top; ?>
 		<h1 class="page-title"><?php echo $text_i_am_returning_customer; ?></h1>
+
 		<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
 			<div class="form-group">
 				<label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
