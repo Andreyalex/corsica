@@ -15,7 +15,14 @@ class ControllerCommonSeoUrl extends Controller {
 				array_pop($parts);
 			}
 
-			foreach ($parts as $part) {
+            $route = CorsicaRouter::getCurrentResource($this->request);
+
+            if ($route) {
+                $this->request->get['route'] = $route['resource'];
+                $parts = array($route['tail']);
+            }
+
+            foreach ($parts as $part) {
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE keyword = '" . $this->db->escape($part) . "'");
 
 				if ($query->num_rows) {
@@ -45,7 +52,10 @@ class ControllerCommonSeoUrl extends Controller {
 						$this->request->get['route'] = $query->row['query'];
 					}
 				} else {
-					$this->request->get['route'] = 'error/not_found';
+
+                    if (!$route) {
+    					$this->request->get['route'] = 'error/not_found';
+                    }
 
 					break;
 				}
@@ -62,17 +72,19 @@ class ControllerCommonSeoUrl extends Controller {
                     }
                     $this->load->model('catalog/category');
                     $category = $this->model_catalog_category->getCategory($catId, true);
-                    $this->request->get['route'] = $category['path'][0]['path_id'] == CorsicaConfig::CATEGORY_COLLECTION_ROOT_ID? 'collection/product' : 'product/product';
+                    $this->request->get['route'] = $this->isWholesaleArea($category['category_id'])? 'collection/product' : 'product/product';
 				} elseif (isset($this->request->get['path'])) {
                     $this->request->get['category_id'] = $this->request->get['path'];
                     $this->load->model('catalog/category');
                     $category = $this->model_catalog_category->getCategory($this->request->get['category_id'], true);
-                    $this->request->get['route'] = $category['path'][0]['path_id'] == CorsicaConfig::CATEGORY_COLLECTION_ROOT_ID? 'collection/category' : 'product/category';
+                    $this->request->get['route'] = $this->isWholesaleArea($category['category_id'])? 'collection/category' : 'product/category';
 				} elseif (isset($this->request->get['manufacturer_id'])) {
 					$this->request->get['route'] = 'product/manufacturer/info';
 				} elseif (isset($this->request->get['information_id'])) {
 					$this->request->get['route'] = 'information/information';
-				}
+				} else {
+                    //$this->request->get['route'] = CorsicaRouter::getCurrentRoute();
+                }
 			}
 
 			if (isset($this->request->get['route'])) {

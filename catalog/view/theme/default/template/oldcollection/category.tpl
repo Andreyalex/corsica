@@ -7,34 +7,14 @@
 ?>
 
     <div id="content" class="catalog">
-	<div class="group">
-        <?php foreach ($products as $product) { ?>
-            <a href="<?php echo $product['href']; ?>">
+	<div class="group categories-previous">
+        <?php foreach ($categories as $category) { ?>
+            <a class="item" href="<?php echo $category['href']; ?>">
                 <div class="col-6 product-item">
-                    <img src="<?php echo $product['thumb']; ?>" />
+                    <img src="/<?php echo $category['image']; ?>" />
                     <div class="product-desc text-center">
                         <div class="product-name">
-                            <h2><?php echo $product['name']; ?></h2>
-                        </div>
-                        <div class="product-size">
-                            <h4>Доступные размеры</h4>
-                            <div class="size-item">
-                                <?php foreach ($product['options'] as $option) { ?>
-                                    <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_SIZE_ID) { ?>
-                                        <?php echo $option['name']; ?>
-                                    <?php } ?>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div class="product-color">
-                            <h4>Доступные цвета</h4>
-                            <div class="color-item">
-                            <?php foreach ($product['options'] as $option) { ?>
-                                <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_COLOR_ID) { ?>
-                                    <span class="color-box <?php echo CorsicaConfig::$productOptionColorMap[$option['option_value_id']]; ?>"></span>
-                                <?php } ?>
-                            <?php } ?>
-                            </div>
+                            <h2><?php echo $category['name']; ?></h2>
                         </div>
                     </div>
                 </div>

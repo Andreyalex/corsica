@@ -40,30 +40,30 @@ abstract class Controller {
         $container = $this->request->server['REQUEST_METHOD'] == 'POST'?
             $this->request->post : $this->request->get;
 
-        switch ($area) {
-            case 'collection':
-                $rootCatId = CorsicaConfig::CATEGORY_COLLECTION_ROOT_ID;
-                break;
-            default:
-                $rootCatId = CorsicaConfig::CATEGORY_SHOP_ROOT_ID;
-        }
-
         // Check if trying to view product
         if (isset($container['product_id'])) {
             $this->load->model('catalog/product');
             $product = $this->model_catalog_product->getProduct($container['product_id'], true);
             $this->load->model('catalog/category');
             $category = $this->model_catalog_category->getCategory($product['categories'][0]['category_id'], true);
-            if ($category['path'][0]['path_id'] != $rootCatId) {
-                $this->response->redirect($this->url->link('error/not_found', '', 'SSL'));
-            }
         // Check if trying to view category
         } elseif (isset($container['path'])) {
             $this->load->model('catalog/category');
             $category = $this->model_catalog_category->getCategory($container['path'], true);
-            if ($category['path'][0]['path_id'] != $rootCatId) {
-                $this->response->redirect($this->url->link('error/not_found', '', 'SSL'));
-            }
         }
+
+        $assetArea = $this->isWholesaleArea($category['category_id'])?
+            'wholesale' : 'shop';
+
+        if ($area != $assetArea) {
+            $this->response->redirect($this->url->link('error/not_found', '', 'SSL'));
+        }
+    }
+
+    public function isWholesaleArea($categoryId)
+    {
+        $this->load->model('catalog/category');
+        $categories = $this->model_catalog_category->getActiveCollections();
+        return $categoryId == $categories[0]['category_id'];
     }
 }

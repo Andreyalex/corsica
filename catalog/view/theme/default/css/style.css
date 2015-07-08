@@ -674,3 +674,9 @@ footer {
 	text-transform: uppercase;
 	color: #fff;
 }
+
+.categories-previous .item {
+    width: 33%;
+    height: 400px;
+    display: block;
+}

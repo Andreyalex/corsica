@@ -36,8 +36,6 @@ class ControllerProductProduct extends Controller {
 
                 $category_info = $this->model_catalog_category->getCategory($path_id, true);
 
-                if ($category_info['path'][0] != CorsicaConfig::CATEGORY_SHOP_ROOT_ID);
-
                 if ($category_info) {
                     $data['breadcrumbs'][] = array(
                         'text' => $category_info['name'],

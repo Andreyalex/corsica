@@ -36,18 +36,23 @@ class CorsicaConfig
     static public $acl = array(
         CorsicaConfig::CUSTOMER_GROUP_GUEST => array(
             array(
-                'resource' => array('area' => 'collection'),
+                'resource' => array('area' => 'wholesale'),
                 'permissions' => array()
             )
         ),
         CorsicaConfig::CUSTOMER_GROUP_USER => array(
             array(
-                'resource' => array('area' => 'collection'),
+                'resource' => array('area' => 'wholesale'),
                 'permissions' => array()
             )
         ),
         CorsicaConfig::CUSTOMER_GROUP_BUYER => array(
         )
+    );
+
+
+    static public $routes = array(
+        '/previous-collections/' => 'oldcollection/category'
     );
 }
 

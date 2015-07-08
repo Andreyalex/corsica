@@ -6,8 +6,8 @@ class ControllerCollectionProduct extends Controller {
 
         $this->load->language('collection/product');
 
-        $this->checkAsset('collection');
-        $this->checkAccess(array('area' => 'collection'));
+        $this->checkAsset('wholesale');
+        $this->checkAccess(array('area' => 'wholesale'));
 
         $data['breadcrumbs'] = array();
 
@@ -578,8 +578,8 @@ class ControllerCollectionProduct extends Controller {
 
 		$this->load->model('catalog/review');
 
-        $this->checkAsset('collection');
-        $this->checkAccess(array('area' => 'collection'));
+        $this->checkAsset('wholesale');
+        $this->checkAccess(array('area' => 'wholesale'));
 
 		$data['text_no_reviews'] = $this->language->get('text_no_reviews');
 
@@ -624,8 +624,8 @@ class ControllerCollectionProduct extends Controller {
 	public function write() {
 		$this->load->language('collection/product');
 
-        $this->checkAsset('collection');
-        $this->checkAccess(array('area' => 'collection'));
+        $this->checkAsset('wholesale');
+        $this->checkAccess(array('area' => 'wholesale'));
 
 		$json = array();
 
@@ -669,8 +669,8 @@ class ControllerCollectionProduct extends Controller {
 		$this->language->load('collection/product');
 		$this->load->model('catalog/product');
 
-        $this->checkAsset('collection');
-        $this->checkAccess(array('area' => 'collection'));
+        $this->checkAsset('wholesale');
+        $this->checkAccess(array('area' => 'wholesale'));
 
 		if (isset($this->request->post['product_id'])) {
 			$product_id = $this->request->post['product_id'];
