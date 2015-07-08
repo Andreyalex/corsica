@@ -2,9 +2,9 @@
 class ControllerAccountAccount extends Controller {
 	public function index() {
 		if (!$this->customer->isLogged()) {
-			$this->session->data['redirect'] = $this->url->link('account/account', '', 'SSL');
-
 			$this->response->redirect($this->url->link('account/login', '', 'SSL'));
+		} else {
+			$this->response->redirect('/');
 		}
 
 		$this->load->language('account/account');

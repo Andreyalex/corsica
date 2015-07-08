@@ -19,11 +19,15 @@ class ControllerMailMail extends Controller {
 	        $mail->setHtml($html);
 
 	        if (!$mail->send()) {
-	            echo json_encode("Мы скоро свяжимся с Вами!");
-	            die;
+	            echo json_encode(array(
+	            	'data' => "Мы скоро свяжимся с Вами!",
+	            	'status' => "ok"
+	            ));
 	        } else {
-	            echo json_encode("Произошла ошибка!");
-	            die;
+	            echo json_encode(array(
+	            	'data' => "Произошла ошибка! Попробуйте позже",
+	            	'status' => "error"
+	            ));
 	        }
         }
 	}

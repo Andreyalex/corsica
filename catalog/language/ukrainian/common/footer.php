@@ -20,3 +20,8 @@ $_['text_order']        = 'Історія замовлень';
 $_['text_wishlist']     = 'Список побажань';
 $_['text_newsletter']   = 'Розсилання новин';
 $_['text_powered']      = 'Створено <a href="http://www.opencart.com">OpenCart</a><br /> %s &copy; %s';
+
+//Callback
+$_['callback_header'] = 'Замовити зворотній дзвінок';
+$_['callback_placeholder']  = 'Ваш телефон';
+$_['callback_button']   = 'Передзвонити';

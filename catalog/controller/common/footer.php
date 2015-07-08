@@ -18,6 +18,10 @@ class ControllerCommonFooter extends Controller {
 		$data['text_wishlist'] = $this->language->get('text_wishlist');
 		$data['text_newsletter'] = $this->language->get('text_newsletter');
 
+		$data['callback_header'] = $this->language->get('callback_header');
+		$data['callback_placeholder'] = $this->language->get('callback_placeholder');
+		$data['callback_button'] = $this->language->get('callback_button');
+
 		$this->load->model('catalog/information');
 
 		$data['informations'] = array();

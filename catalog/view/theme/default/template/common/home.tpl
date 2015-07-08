@@ -7,7 +7,7 @@
 			<img src="<?php echo $category['image']; ?>" alt="<?php echo $category['name']; ?>"/>
 			<div class="inner fade">
 				<div class="label"></div>
-				<div class="title"><?php echo $category['name']; ?></div>
+				<div class="title"><?php echo $text_collection; ?></div>
 			</div>
 		</div>
 	</a>
@@ -17,7 +17,7 @@
 			<img src="<?php echo $category['image']; ?>" alt="<?php echo $category['name']; ?>"/>
 			<div class="inner fade">
 				<div class="lock"><i class="fa fa-lock fa-4x"></i></div>
-				<div class="title">Просмотр только для байеров</div>
+				<div class="title"><?php echo $text_logout; ?></div>
 			</div>
 		</div>
 	</a>
@@ -27,7 +27,7 @@
 			<img src="image/catalog/bg-about.jpg" alt="О нас"/>
 			<div class="inner fade">
 				<div class="label"></div>
-				<div class="title">О нас</div>
+				<div class="title"><?php echo $text_about; ?></div>
 			</div>
 		</div>
 	</a>
@@ -39,7 +39,7 @@
 			<img src="" alt="Магазин"/>
 			<div class="inner fade">
 				<div class="label"></div>
-				<div class="title">Магазин</div>
+				<div class="title"><?php echo $text_store; ?></div>
 			</div>
 		</div>
 	</a>
@@ -48,7 +48,7 @@
 			<img src="" alt="Предыдущие коллекции"/>
 			<div class="inner fade">
 				<div class="label"></div>
-				<div class="title">Предыдущие коллекции</div>
+				<div class="title"><?php echo $text_oldcollection; ?></div>
 			</div>
 		</div>
 	</a>

@@ -63,7 +63,6 @@ div {
 .container {
 	width: 860px;
 	margin: 0 auto;
-	padding-bottom: 30px;
 }
 .page {
 	height: 100%;
@@ -107,6 +106,13 @@ a:focus {
 	font-size: 14px;
 	border: 1px solid #c8ccce;
 	outline: none;
+}
+.form-control.error {
+	border: 1px solid #f00;
+}
+form button[type=submit],
+form input[type=submit] {
+	margin-bottom: 30px;
 }
 abbr {
 	color: #eb0003;
@@ -326,6 +332,39 @@ abbr {
 .alert.alert-danger {
 	background: #eb0003;
 }
+.alert-ohsnap {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  box-shadow: 0 0 5px rgba(0,0,0,.35);
+}
+.alert-ohsnap.alert-red {
+  color: white;
+  background-color: #DA4453;
+}
+.alert-ohsnap.alert-green {
+  color: white;
+  background-color: #37BC9B;
+}
+.alert-ohsnap.alert-blue {
+  color: white;
+  background-color: #4A89DC;
+}
+.alert-ohsnap.alert-yellow {
+  color: white;
+  background-color: #F6BB42;
+}
+.alert-orange {
+  color:white;
+  background-color: #E9573F;
+}
+#ohsnap {
+	z-index: 999;
+}
+
 /* Header
 =====================================*/
 #logo {
@@ -436,9 +475,9 @@ abbr {
 	display: block;
 	position: absolute;
 	left: 0;
-	bottom: -150px;
+	bottom: -160px;
 	width: 100%;
-	height: 150px;
+	height: 160px;
 	color: #ffffff;
 	background: rgba(0, 0, 0, 0.45);
 	transition: all .8s;
@@ -449,6 +488,12 @@ abbr {
 	font-weight: 700;
 	text-transform: uppercase;
 }
+.product-item .product-desc .product-name h2 {
+	margin: 10px 0 0;
+	font-size: 16px;
+	font-weight: 400;
+	text-transform: uppercase;
+}
 .product-item .product-desc .product-size h4,
 .product-item .product-desc .product-color h4 {
 	margin: 0 0 5px;
@@ -457,7 +502,10 @@ abbr {
 	text-transform: uppercase;
 }
 .product-item .product-desc .product-size {
-	margin: 20px 0 10px;
+	margin: 10px 0;
+}
+.product-item .product-desc .product-size .size-item {
+	font-size: 14px;
 }
 .product-item:hover .product-desc {
 	bottom: 0;

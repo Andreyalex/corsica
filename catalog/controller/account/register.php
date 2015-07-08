@@ -4,7 +4,7 @@ class ControllerAccountRegister extends Controller {
 
 	public function index() {
 		if ($this->customer->isLogged()) {
-			$this->response->redirect($this->url->link('account/account', '', 'SSL'));
+			$this->response->redirect('/');
 		}
 
 		$this->load->language('account/register');

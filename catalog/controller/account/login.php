@@ -47,7 +47,7 @@ class ControllerAccountLogin extends Controller {
 		}
 
 		if ($this->customer->isLogged()) {
-			$this->response->redirect($this->url->link('account/account', '', 'SSL'));
+			$this->response->redirect('/');
 		}
 
 		$this->load->language('account/login');

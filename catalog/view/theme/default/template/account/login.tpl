@@ -19,7 +19,6 @@
 <?php echo $column_left; ?>
 	<div id="content" class="login-form"><?php echo $content_top; ?>
 		<h1 class="page-title"><?php echo $text_i_am_returning_customer; ?></h1>
-
 		<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
 			<div class="form-group">
 				<label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
@@ -33,7 +32,7 @@
 
 			<div class="group">
 				<div class="col-2 text-left">
-					<a href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?></a>
+					<a href="<?php echo $register; ?>"><?php echo $text_register; ?></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?></a>
 				</div>
 				<div class="col-2 text-right">
 					<input type="submit" value="<?php echo $button_login; ?>" class="btn btn-default" />

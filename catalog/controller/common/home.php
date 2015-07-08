@@ -16,6 +16,14 @@ class ControllerCommonHome extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
+		$this->load->language('common/home');
+
+		$data['text_collection'] = $this->language->get('text_collection');
+		$data['text_about'] = $this->language->get('text_about');
+		$data['text_store'] = $this->language->get('text_store');
+		$data['text_oldcollection'] = $this->language->get('text_oldcollection');
+		$data['text_logout'] = $this->language->get('text_logout');
+
 		$this->load->model('catalog/category');
 		$this->load->model('tool/image');
 
