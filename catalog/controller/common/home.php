@@ -28,7 +28,7 @@ class ControllerCommonHome extends Controller {
 		$this->load->model('tool/image');
 
 		$categories = $this->model_catalog_category->getActiveCollections();
-		$category = end($categories);
+		$category = $categories[0];
 		$image = $this->model_tool_image->resize($category['image'], $this->config->get('config_image_category_width'), $this->config->get('config_image_category_height'));
 
 		$data['category'] = array(

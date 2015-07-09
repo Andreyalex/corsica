@@ -54,7 +54,7 @@ class ControllerOldCollectionCategory extends Controller {
 
                 $data['categories'][] = array(
                     'name' => $category_info['name'],
-                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $category_info['category_id'] . $url),
+                    'href' => $this->url->link('product/category', 'path=' . $category_info['category_id'] . $url),
                     'thumb' => $image
                 );
             }
