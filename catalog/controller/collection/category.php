@@ -1,7 +1,6 @@
 <?php
 class ControllerCollectionCategory extends Controller {
 	public function index() {
-
         $this->load->language('collection/category');
 
         $this->load->model('catalog/category');

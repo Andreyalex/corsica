@@ -6,21 +6,18 @@
     echo $header;
 ?>
 
-    <div id="content" class="catalog">
-	<div class="group categories-previous">
-        <?php foreach ($categories as $category) { ?>
-            <a class="item" href="<?php echo $category['href']; ?>">
-                <div class="col-6 product-item">
-                    <img src="/<?php echo $category['image']; ?>" />
-                    <div class="product-desc text-center">
-                        <div class="product-name">
-                            <h2><?php echo $category['name']; ?></h2>
-                        </div>
-                    </div>
+<div id="content" class="old-collection">
+    <?php foreach ($categories as $category) { ?>
+    	<a href="<?php echo $category['href']; ?>">
+            <div class="col-md-6 collection">
+                <img src="<?php echo $category['thumb']; ?>" alt="<?php echo $category['name']; ?>"/>
+                <div class="inner fade">
+                    <div class="label"></div>
+                    <div class="title"><?php echo $category['name']; ?></div>
                 </div>
-            </a>
-        <?php } ?>
-    </div>
+            </div>
+        </a>
+    <?php } ?>
 </div>
 
 <?php echo $footer; ?>
