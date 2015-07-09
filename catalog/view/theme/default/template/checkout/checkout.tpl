@@ -29,7 +29,7 @@
             <div class="panel-body"></div>
           </div>
         </div>
-        <?php if (!$logged && $account == 'guest') { ?>
+        <?php if (!$logged && ($account == 'guest' || $account == '')) { ?>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title"><?php echo $text_checkout_payment_address; ?></h4>
