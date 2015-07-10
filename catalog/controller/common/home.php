@@ -34,7 +34,7 @@ class ControllerCommonHome extends Controller {
 		$data['category'] = array(
 			'name'  => $category['name'],
 			'image' => $image,
-			'href'  => $this->url->link('product/category', 'path=' . $category['category_id'])
+			'href'  => $this->url->link('collection/category', 'path=' . $category['category_id'])
 		);
 
 		$data['logged'] = $this->customer->isLogged();
