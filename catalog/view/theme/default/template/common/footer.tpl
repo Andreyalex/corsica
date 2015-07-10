@@ -2,12 +2,15 @@
 
 <footer>
 	<div class="group">
-		<div class="col-md-9"></div>
-		<div class="col-md-3 callback">
-			<h4 class="title text-right"><?php echo $callback_header ?></h4>
-			<form class="form-callback">
-				<input class="form-control" type="text" name="phone" value="" placeholder="<?php echo $callback_placeholder; ?>" pattern="\d*" />
-				<button class="btn btn-callback" type="submit"><?php echo $callback_button; ?></button>
+        <div class="col-md-4"></div>
+		<div class="col-md-4 center">
+            <span class="copyright">&copy; 2015 Corsica</span>
+        </div>
+		<div class="col-md-4 callback">
+			<form class="form-callback form-inline pull-right">
+                <div class="title text-right"><?php echo $callback_header ?></div>
+                <input class="form-control" type="text" name="phone" value="" placeholder="<?php echo $callback_placeholder; ?>" pattern="\d*" />
+                <button class="btn btn-callback" type="submit"><?php echo $callback_button; ?></button>
 			</form>
 		</div>
 	</div>
