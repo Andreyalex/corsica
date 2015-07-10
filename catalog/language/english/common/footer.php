@@ -17,6 +17,6 @@ $_['text_newsletter']   = 'Newsletter';
 $_['text_powered']      = 'Powered By <a href="http://www.opencart.com">OpenCart</a><br /> %s &copy; %s';
 
 //Callback
-$_['callback_header'] = 'Request a call back';
+$_['callback_header'] = 'Call back';
 $_['callback_placeholder']  = 'Enter your phone number';
 $_['callback_button']   = 'Call back';
