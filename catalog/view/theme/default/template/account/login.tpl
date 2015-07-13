@@ -40,6 +40,7 @@
 						<input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
 					<?php } ?>
 				</div>
+				<br />
 			</div>
 		</form>
 	</div>
