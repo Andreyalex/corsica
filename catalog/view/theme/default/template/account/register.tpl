@@ -103,6 +103,7 @@
                 </div>
             </div>
             <?php } ?>
+            <br />
         </form>
     </div>
 </div>

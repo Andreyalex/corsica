@@ -87,6 +87,9 @@ a:hover {
 a:focus {
 	outline: none;
 }
+a.btn {
+	text-decoration: none;
+}
 .dropdown-menu {
 	border-radius: 0;
 }
@@ -109,10 +112,6 @@ a:focus {
 }
 .form-control.error {
 	border: 1px solid #f00;
-}
-form button[type=submit],
-form input[type=submit] {
-	margin-bottom: 30px;
 }
 abbr {
 	color: #eb0003;
@@ -147,6 +146,9 @@ abbr {
 }
 .form-control {
 	border-radius: 0;
+}
+.input-group-btn {
+	top: 3px;
 }
 .inner {
 	display: block;

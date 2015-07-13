@@ -1,10 +1,17 @@
 <?php
 class ControllerMailMail extends Controller {
 	public function index() {
+		$message = array();
+
+		$this->load->language('mail/callback');
+
+		$message['ok'] = $this->language->get('text_ok');
+		$message['error'] = $this->language->get('text_error');
+
 		$this->load->library('mail');
 
         $mail = new Mail();
-        
+
         if (isset($this->request->post['phone'])) {
             $phone = $this->request->post['phone'];
         }
@@ -20,13 +27,13 @@ class ControllerMailMail extends Controller {
 
 	        if (!$mail->send()) {
 	            echo json_encode(array(
-	            	'data' => "Мы скоро свяжимся с Вами!",
-	            	'status' => "ok"
+	            	'data' => $message['ok'],
+	            	'status' => 'ok'
 	            ));
 	        } else {
 	            echo json_encode(array(
-	            	'data' => "Произошла ошибка! Попробуйте позже",
-	            	'status' => "error"
+	            	'data' => $message['error'],
+	            	'status' => 'error'
 	            ));
 	        }
         }
