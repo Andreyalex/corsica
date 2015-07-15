@@ -10,20 +10,25 @@ class ControllerMailMail extends Controller {
 
 		$this->load->library('mail');
 
-        $mail = new Mail();
-
         if (isset($this->request->post['phone'])) {
             $phone = $this->request->post['phone'];
         }
 
         if ($phone) {
-        	$mail->setSender($phone);
+            $mail = new Mail();
+            $mail->protocol = $this->config->get('config_mail_protocol');
+            $mail->parameter = $this->config->get('config_mail_parameter');
+            $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+            $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+            $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+            $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+            $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+        	$mail->setSender($this->config->get('config_email'));
         	$mail->setSubject('Обратный звонок');
         	$mail->setTo($this->config->get('config_email'));
 	        $mail->setFrom($this->config->get('config_email'));
-
-	        $html = 'Пререзвоните мне на номер - ' .$phone;
-	        $mail->setHtml($html);
+	        $text = 'Пререзвоните мне на номер - ' .$phone;
+	        $mail->setText($text);
 
 	        if (!$mail->send()) {
 	            echo json_encode(array(
