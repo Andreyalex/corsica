@@ -600,7 +600,7 @@ class ControllerSettingSetting extends Controller {
 		$directories = glob(DIR_CATALOG . 'view/theme/*', GLOB_ONLYDIR);
 
 		foreach ($directories as $directory) {
-			$data['templates'][] = basename($directory);
+			$data['templates'][] = mb_basename($directory);
 		}
 
 		if (isset($this->request->post['config_country_id'])) {
@@ -1469,8 +1469,8 @@ class ControllerSettingSetting extends Controller {
 			$server = HTTP_CATALOG;
 		}
 
-		if (is_file(DIR_IMAGE . 'templates/' . basename($this->request->get['template']) . '.png')) {
-			$this->response->setOutput($server . 'image/templates/' . basename($this->request->get['template']) . '.png');
+		if (is_file(DIR_IMAGE . 'templates/' . mb_basename($this->request->get['template']) . '.png')) {
+			$this->response->setOutput($server . 'image/templates/' . mb_basename($this->request->get['template']) . '.png');
 		} else {
 			$this->response->setOutput($server . 'image/no_image.png');
 		}

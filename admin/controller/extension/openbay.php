@@ -119,7 +119,7 @@ class ControllerExtensionOpenbay extends Controller {
 		$markets = array('ebay', 'etsy', 'amazon', 'amazonus');
 
 		foreach ($markets as $market) {
-			$extension = basename($market, '.php');
+			$extension = mb_basename($market, '.php');
 
 			$this->load->language('openbay/' . $extension);
 

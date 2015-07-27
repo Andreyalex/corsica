@@ -142,11 +142,11 @@ class Mail {
 				fclose($handle);
 
 				$message .= '--' . $boundary . $this->newline;
-				$message .= 'Content-Type: application/octet-stream; name="' . basename($attachment) . '"' . $this->newline;
+				$message .= 'Content-Type: application/octet-stream; name="' . mb_basename($attachment) . '"' . $this->newline;
 				$message .= 'Content-Transfer-Encoding: base64' . $this->newline;
-				$message .= 'Content-Disposition: attachment; filename="' . basename($attachment) . '"' . $this->newline;
-				$message .= 'Content-ID: <' . basename(urlencode($attachment)) . '>' . $this->newline;
-				$message .= 'X-Attachment-Id: ' . basename(urlencode($attachment)) . $this->newline . $this->newline;
+				$message .= 'Content-Disposition: attachment; filename="' . mb_basename($attachment) . '"' . $this->newline;
+				$message .= 'Content-ID: <' . mb_basename(urlencode($attachment)) . '>' . $this->newline;
+				$message .= 'X-Attachment-Id: ' . mb_basename(urlencode($attachment)) . $this->newline . $this->newline;
 				$message .= chunk_split(base64_encode($content));
 			}
 		}

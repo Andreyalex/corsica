@@ -356,7 +356,7 @@ class ControllerUserUserPermission extends Controller {
 		foreach ($files as $file) {
 			$part = explode('/', dirname($file));
 
-			$permission = end($part) . '/' . basename($file, '.php');
+			$permission = end($part) . '/' . mb_basename($file, '.php');
 
 			if (!in_array($permission, $ignore)) {
 				$data['permissions'][] = $permission;

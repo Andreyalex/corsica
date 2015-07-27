@@ -72,3 +72,8 @@ class CorsicaHelper
 
 }
 
+function mb_basename($filepath, $suffix = NULL) {
+    $splited = preg_split ( '/\//', rtrim ( $filepath, '/ ' ) );
+    return substr ( basename ( 'X' . $splited [count ( $splited ) - 1],
+        $suffix ), 1 );
+}

@@ -50,7 +50,7 @@ class ControllerCommonFileManager extends Controller {
 		$images = array_splice($images, ($page - 1) * 16, 16);
 
 		foreach ($images as $image) {
-			$name = str_split(basename($image), 14);
+    			$name = str_split(mb_basename($image), 36);
 
 			if (is_dir($image)) {
 				$url = '';
@@ -223,7 +223,7 @@ class ControllerCommonFileManager extends Controller {
 		if (!$json) {
 			if (!empty($this->request->files['file']['name']) && is_file($this->request->files['file']['tmp_name'])) {
 				// Sanitize the filename
-				$filename = basename(html_entity_decode($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8'));
+				$filename = mb_basename($this->request->files['file']['name']);
 
 				// Validate the filename length
 				if ((utf8_strlen($filename) < 3) || (utf8_strlen($filename) > 255)) {
@@ -272,6 +272,9 @@ class ControllerCommonFileManager extends Controller {
 		}
 
 		if (!$json) {
+
+            $filename = mb_convert_encoding($filename, "UTF-8");
+
 			move_uploaded_file($this->request->files['file']['tmp_name'], $directory . '/' . $filename);
 
 			$json['success'] = $this->language->get('text_uploaded');
@@ -305,7 +308,7 @@ class ControllerCommonFileManager extends Controller {
 
 		if (!$json) {
 			// Sanitize the folder name
-			$folder = str_replace(array('../', '..\\', '..'), '', basename(html_entity_decode($this->request->post['folder'], ENT_QUOTES, 'UTF-8')));
+			$folder = str_replace(array('../', '..\\', '..'), '', mb_basename(html_entity_decode($this->request->post['folder'], ENT_QUOTES, 'UTF-8')));
 
 			// Validate the filename length
 			if ((utf8_strlen($folder) < 3) || (utf8_strlen($folder) > 128)) {

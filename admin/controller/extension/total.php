@@ -121,7 +121,7 @@ class ControllerExtensionTotal extends Controller {
 
 		if ($files) {
 			foreach ($files as $file) {
-				$extension = basename($file, '.php');
+				$extension = mb_basename($file, '.php');
 
 				$this->load->language('total/' . $extension);
 

@@ -2,6 +2,8 @@
 // Version
 define('VERSION', '2.0.2.0');
 
+require_once('../corsica/helper.php');
+
 // Configuration
 if (is_file('config.php')) {
 	require_once('config.php');
