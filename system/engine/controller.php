@@ -44,20 +44,24 @@ abstract class Controller {
         if (isset($container['product_id'])) {
             $this->load->model('catalog/product');
             $product = $this->model_catalog_product->getProduct($container['product_id'], true);
-            $this->load->model('catalog/category');
-            $category = $this->model_catalog_category->getCategory($product['categories'][0]['category_id'], true);
+            $categories = $product['categories'];
         // Check if trying to view category
         } elseif (isset($container['path'])) {
-            $this->load->model('catalog/category');
-            $category = $this->model_catalog_category->getCategory($container['path'], true);
+            $categories = array(array('category_id' => $container['path']));
         }
 
-        $assetArea = $this->isWholesaleArea($category['category_id'])?
-            'wholesale' : 'shop';
+        $this->load->model('catalog/category');
+        foreach($categories as $category) {
+            $category = $this->model_catalog_category->getCategory($category['category_id'], true);
 
-        if ($area != $assetArea) {
-            $this->response->redirect($this->url->link('error/not_found', '', 'SSL'));
+            $assetArea = $this->isWholesaleArea($category['category_id'])?
+                'wholesale' : 'shop';
+
+            if ($area == $assetArea) {
+                return true;
+            }
         }
+        $this->response->redirect($this->url->link('error/not_found', '', 'SSL'));
     }
 
     public function isWholesaleArea($categoryId)
