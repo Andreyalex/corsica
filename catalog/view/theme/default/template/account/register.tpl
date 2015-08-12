@@ -62,7 +62,7 @@
             </div>
 
             <?php foreach ($custom_fields as $custom_field) { ?>
-                <?php if ($custom_field['location'] == 'account') { ?>
+                <?php if ($custom_field['sort_order'] >= 0 && $custom_field['location'] == 'account') { ?>
                     <?php if ($custom_field['type'] == 'select') { ?>
                         <div id="custom-field<?php echo $custom_field['custom_field_id']; ?>" class="form-group custom-field" data-sort="<?php echo $custom_field['sort_order']; ?>">
                             <label class="control-label" for="input-custom-field<?php echo $custom_field['custom_field_id']; ?>"><?php echo $custom_field['name']; ?></label>
