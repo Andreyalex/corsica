@@ -44,7 +44,7 @@
                     <?php foreach ($options as $option) { ?>
                         <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_COLOR_ID) { ?>
                             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>" style="overflow: hidden">
-                                <label class="control-label"><?php echo $option['name']; ?></label>
+                                <label class="control-label"><?php echo 'Укажите цвет'; ?></label>
                                 <div id="input-option<?php echo $option['product_option_id']; ?>" style="overflow: hidden" class="options-color">
                                     <?php foreach ($option['product_option_value'] as $option_value) { ?>
                                         <div
@@ -98,6 +98,7 @@
                         <?php } ?>
                     <?php } ?>
 
+                    <!--
                     <?php if ($price) { ?>
                         <ul class="list-unstyled">
                             <?php if (!$special) { ?>
@@ -127,23 +128,39 @@
                         </ul>
                         <br/>
                     <?php } ?>
+                    -->
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="control-label" for="input-quantity">Количество</label>
                         <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control">
-                    </div>
+                    </div> -->
 
                 </div>
 
-                <div class="product-add">
+                <!-- <div class="product-add">
                     <button id="button-cart" class="btn btn-default">Добавить в корзину</button>
-                </div>
+                </div> -->
+
             </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
+$('.control-label').each(function() {
+    if($(this).text() == 'Цвет' ) {
+        $(this).text('Выберите цвет');
+    }
+
+    if($(this).text() == 'Колір' ) {
+        $(this).text('Обиріть колір');
+    }
+
+    if($(this).text() == 'Color' ) {
+        $(this).text('Select color');
+    }
+});
+
 $('#button-cart').on('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/cart/add',

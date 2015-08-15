@@ -27,11 +27,11 @@
 .col-10 img,
 .col-11 img,
 .col-12 img {
-  display: block;
   width: 100%;
   height: auto;
+  vertical-align: middle;
 }
-.group:after {
+.group:after, .clearfix:after {
   display: table;
   content: "";
   clear: both;
@@ -72,6 +72,21 @@
 .col-12 {
   width: 7.3333%;
 }
+@media (max-width: 1200px) {
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7,
+  .col-8,
+  .col-9,
+  .col-10,
+  .col-11,
+  .col-12 {
+    width: 25%;
+  }
 @media (max-width: 768px) {
   .col-1,
   .col-2,
@@ -85,7 +100,7 @@
   .col-10,
   .col-11,
   .col-12 {
-    width: 100%;
+    width: 50%;
   }
   .col-1:after,
   .col-2:after,

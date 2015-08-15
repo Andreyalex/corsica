@@ -45,7 +45,7 @@
                     <?php foreach ($options as $option) { ?>
                         <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_COLOR_ID) { ?>
                             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>" style="overflow: hidden">
-                                <label class="control-label"><?php echo $option['name']; ?></label>
+                                <label class="control-label"><?php echo $option_color; ?></label>
                                 <div id="input-option<?php echo $option['product_option_id']; ?>" style="overflow: hidden" class="options-color">
                                     <?php foreach ($option['product_option_value'] as $option_value) { ?>
                                         <div class="item"
@@ -72,7 +72,7 @@
                     <?php foreach ($options as $option) { ?>
                         <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_SIZE_ID) { ?>
                             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>" style="overflow: hidden">
-                                <label class="control-label"><?php echo 'Размерьі в ростовке'; ?></label>
+                                <label class="control-label"><?php echo $option_size; ?></label>
                                 <div style="overflow: hidden">
                                     <div class="table-size readonly">
                                         <?php $sizeSet = 0; foreach (CorsicaConfig::$productOptionSizeMap as $name => $sizeArray) { ?>
@@ -103,14 +103,14 @@
                             <?php if (!$special) { ?>
                                 <li>
                                     <br/>
-                                    <label>Цена за единицу товара в ростовке</label>
+                                    <label><?php echo $text_price; ?></label>
                                     <h2 style="margin:0"><?php echo $price; ?></h2>
                                 </li>
                             <?php } else { ?>
                                 <li><span style="text-decoration: line-through;"><?php echo $price; ?></span></li>
                                 <li>
                                     <br/>
-                                    <label>Цена за единицу товара в ростовке</label>
+                                    <label><?php echo $text_price; ?>/label>
                                     <h2 style="margin:0"><?php echo $special; ?></h2>
                                 </li>
                             <?php } ?>
@@ -133,17 +133,17 @@
                     <?php } ?>
 
                     <div class="form-group">
-                        <label class="control-label" for="input-quantity">Количество ростовок</label>
+                        <label class="control-label" for="input-quantity"><?php echo $text_qty; ?></label>
                         <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control">
                     </div>
 
                 </div>
 
                 <div class="product-add">
-                    <p>В корзине будет указана суммарная цена за ростовку.</p>
-                    <button id="button-cart" class="btn btn-default">Добавить в корзину</button>
-
+                    <p><?php echo $text_cart; ?></p>
+                    <button id="button-cart" class="btn btn-default"><?php echo $button_cart; ?></button>
                 </div>
+                
             </div>
         </div>
     </div>

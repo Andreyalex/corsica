@@ -4,13 +4,17 @@
 	<div class="group">
         <div class="col-md-4"></div>
 		<div class="col-md-4 center">
-            <span class="copyright">&copy; 2015 Corsica</span>
+            <span class="copyright">2015 &copy; Corsica</span>
         </div>
 		<div class="col-md-4 callback">
 			<form class="form-callback form-inline pull-right">
                 <div class="title text-right"><?php echo $callback_header ?></div>
-                <input class="form-control" type="text" name="phone" value="" placeholder="<?php echo $callback_placeholder; ?>" pattern="\d*" />
-                <button class="btn btn-callback" type="submit"><?php echo $callback_button; ?></button>
+                <div class="input-group">
+			    	<input class="form-control" type="text" name="phone" value="" placeholder="<?php echo $callback_placeholder; ?>" pattern="\d*" />
+		    		<span class="input-group-btn">
+		        		<button class="btn btn-callback" type="submit"><?php echo $callback_button; ?></button>
+		      		</span>
+			    </div>
 			</form>
 		</div>
 	</div>

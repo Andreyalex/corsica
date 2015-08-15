@@ -6,6 +6,12 @@ class ControllerCollectionProduct extends Controller {
 
         $this->load->language('collection/product');
 
+        $data['option_color'] = $this->language->get('option_color');
+        $data['option_size'] = $this->language->get('option_size');
+        $data['text_price'] = $this->language->get('text_price');
+        $data['text_qty'] = $this->language->get('text_qty');
+        $data['text_cart'] = $this->language->get('text_cart');
+
         $this->checkAsset('wholesale');
         $this->checkAccess(array('area' => 'wholesale'));
 

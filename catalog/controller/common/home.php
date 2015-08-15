@@ -28,14 +28,18 @@ class ControllerCommonHome extends Controller {
 		$this->load->model('tool/image');
 
 		$categories = $this->model_catalog_category->getActiveCollections();
-		$category = $categories[0];
-		$image = $this->model_tool_image->resize($category['image'], $this->config->get('config_image_category_width'), $this->config->get('config_image_category_height'));
 
-		$data['category'] = array(
-			'name'  => $category['name'],
-			'image' => $image,
-			'href'  => $this->url->link('collection/category', 'path=' . $category['category_id'])
-		);
+		if ($categories) {
+			foreach ($categories as $category) {
+				$image = $this->model_tool_image->resize($category['image'], $this->config->get('config_image_category_width'), $this->config->get('config_image_category_height'));
+
+				$data['categories'][] = array(
+					'name'  => $category['name'],
+					'image' => $image,
+					'href'  => $this->url->link('collection/category', 'path=' . $category['category_id'])
+				);
+			}
+		}
 
 		$data['logged'] = $this->customer->isLogged();
 

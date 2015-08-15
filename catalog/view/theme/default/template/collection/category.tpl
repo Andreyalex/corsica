@@ -17,7 +17,7 @@
                             <h2><?php echo $product['name']; ?></h2>
                         </div>
                         <div class="product-size">
-                            <h4>Доступные размеры</h4>
+                            <h4><?php echo $text_size; ?></h4>
                             <div class="size-item">
                                 <?php foreach ($product['options'] as $option) { ?>
                                     <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_SIZE_ID) { ?>
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="product-color">
-                            <h4>Доступные цвета</h4>
+                            <h4><?php echo $text_color; ?></h4>
                             <div class="color-item">
                             <?php foreach ($product['options'] as $option) { ?>
                                 <?php if ($option['option_id'] == CorsicaConfig::PRODUCT_OPTION_COLOR_ID) { ?>

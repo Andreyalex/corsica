@@ -1,8 +1,8 @@
 <?php if (count($languages) > 1) { ?>
 <div class="languages">
-    <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <div class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         <span><?php echo substr($this->registry->get('config')->get('config_language_name'), 0, 3); ?></span>
-        <span class="caret"></span>
+        <i class="fa fa-angle-down"></i>
     </div>
     <ul class="dropdown-menu dropdown-menu-right">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="language">

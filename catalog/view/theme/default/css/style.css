@@ -64,6 +64,12 @@ div {
 	width: 860px;
 	margin: 0 auto;
 }
+@media (max-width: 860px) {
+	.container {
+		width: 100%;
+		padding: 0 15px 15px;
+	}
+}
 .page {
 	height: 100%;
 	height: auto !important;
@@ -147,9 +153,6 @@ abbr {
 .form-control {
 	border-radius: 0;
 }
-.input-group-btn {
-	top: 3px;
-}
 .inner {
 	display: block;
 	position: absolute;
@@ -216,7 +219,11 @@ abbr {
 .fade:hover {
 	opacity: 1;
 }
-
+.thumb {
+	width: 250px;
+	height: auto;
+	margin: 35px 0 30px;
+}
 .color-item .color-box {
 	width: 20px;
 	height: 20px;
@@ -572,19 +579,22 @@ abbr {
 	background: none;
 }
 #cart.open > .btn {
-	color: #666;
+	color: #7a797e;
 	box-shadow: none;
 	text-shadow: none;
-}
-#cart.open > .btn:hover {
-	color: #444;
 }
 #cart .dropdown-menu {
 	background: #eee;
 	z-index: 1001;
 }
 #cart .dropdown-menu {
-	min-width: 100%;
+	min-width: 207px;
+	margin-top: 40px;
+	border-top: none;
+	box-shadow: 0 2px 5px rgba(0,0,0,.05);
+}
+#cart .dropdown-menu.pull-right {
+	right: -1px;
 }
 @media (max-width: 478px) {
 	#cart .dropdown-menu {
@@ -617,17 +627,32 @@ abbr {
 	border-radius: 0;
 }
 
-.languages {
+.languages, .currency {
 	cursor: pointer;
 }
 
-.languages .dropdown-menu {
-	border: none;
-	border-radius: 0;
+.languages .dropdown-menu, .currency .dropdown-menu {
 	padding: 0;
-	min-width: 145px;
-	margin: 2px 2px 0 0;
+	margin: 0;
+	min-width: 169px;
 	background: #e3e5e6;
+	border: 1px solid rgba(0,0,0,.15);
+	border-top: none;
+	border-radius: 0;
+	box-shadow: 0 2px 5px rgba(0,0,0,.05);
+}
+
+.currency .dropdown-menu {
+	min-width: 152px;
+}
+
+.languages .dropdown-menu-right {
+	right: -1px;
+}
+
+.languages.open .dropdown-menu .menu-item a {
+	width: 55px;
+	text-align: center;
 }
 
 .form-horizontal .form-group > input.form-control,
@@ -658,6 +683,10 @@ abbr {
 	height: 150px;
 }
 
+.information .contacts {
+	font-size: 16px;
+}
+
 /* Footer
 =====================================*/
 footer {
@@ -666,7 +695,7 @@ footer {
 	clear: both;
 	position: relative;
 	z-index: 10;
-	height: 90px;
+	min-height: 90px;
 	margin-top: -90px;
     font-size: 14px;
 }

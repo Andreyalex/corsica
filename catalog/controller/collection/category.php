@@ -3,6 +3,9 @@ class ControllerCollectionCategory extends Controller {
 	public function index() {
         $this->load->language('collection/category');
 
+        $data['text_size'] = $this->language->get('text_size');
+        $data['text_color'] = $this->language->get('text_color');
+
         $this->load->model('catalog/category');
 
         $this->load->model('catalog/product');

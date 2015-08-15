@@ -77,18 +77,22 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
                 </li>
 
                 <?php if ($logged) { ?>
-		            <li class="menu-item"><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+		            <li class="menu-item"><a href="<?php echo $logout; ?>"><i class="fa fa-lock"></i> <?php echo $text_logout; ?></a></li>
 				<?php } else { ?>
-					<li class="menu-item"><a href="<?php echo $login; ?>" class="btn btn-login"><?php echo $text_login; ?></a></li>
+					<li class="menu-item"><a href="<?php echo $login; ?>" class="btn btn-login"><i class="fa fa-unlock-alt"></i> <?php echo $text_login; ?></a></li>
+				<?php } ?>
+
+				<?php foreach ($informations as $information) { ?>
+					<li class="menu-item"><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
 				<?php } ?>
 
                 <li class="menu-item">
                     <?php echo $language; ?>
                 </li>
 
-                <?php foreach ($informations as $information) { ?>
-				<li class="menu-item"><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
-				<?php } ?>
+                <li class="menu-item">
+                	<?php echo $currency; ?>
+                </li>
 			</ul>
 		</div>
 	</nav>
