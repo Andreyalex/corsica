@@ -66,11 +66,12 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
 			<ul class="left-menu">
 				<li class="menu-item">
                     <a id="logo" href="/">
-                        <img src="<?php echo $theme; ?>/image/icon-logo.png">
+                        <img src="<?php echo $theme; ?>/image/icon-logo.png" />
                     </a>
                 </li>
                 <!--{{pageTitle}}-->
 			</ul>
+
 			<ul class="right-menu">
                 <li class="menu-item">
                     <?php echo $cart; ?>
@@ -94,6 +95,14 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
                 	<?php echo $currency; ?>
                 </li>
 			</ul>
+
+			<div class="button__mobile-menu">
+				<i class="fa fa-navicon"></i>
+			</div>
 		</div>
+
+		<ul class="mobile-menu">
+			<li></li>
+		</ul>
 	</nav>
 </header>
