@@ -4,6 +4,8 @@
 /admin/config.php
 /image/cache/*
 !/image/cache/index.html
+/image/catalog/*
+!/image/catalog/index.html
 /system/cache/*
 !/system/cache/index.html
 /system/logs/*
