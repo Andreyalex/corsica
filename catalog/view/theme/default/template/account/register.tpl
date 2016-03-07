@@ -81,6 +81,8 @@
                             <?php } ?>
                         </div>
                     <?php } ?>
+                <?php } else { ?>
+                    <input type="hidden" name="custom_field[<?php echo $custom_field['location']; ?>][<?php echo $custom_field['custom_field_id']; ?>]" id="input-custom-field<?php echo $custom_field['custom_field_id']; ?>" value="<?php echo $custom_field['custom_field_value'][0]['custom_field_value_id']?>" />
                 <?php } ?>
             <?php } ?>
 
