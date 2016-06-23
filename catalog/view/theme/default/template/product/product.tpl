@@ -132,24 +132,16 @@
 
                     <?php } ?>
                     
-                    <?php if ($logged) { ?>
-
-                        <div class="form-group">
-                            <label class="control-label" for="input-quantity">Количество</label>
-                            <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control">
-                        </div>
-
-                    <?php } ?>
+                    <div class="form-group">
+                        <label class="control-label" for="input-quantity">Количество</label>
+                        <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control">
+                    </div>
 
                 </div>
 
-                 <?php if ($logged) { ?>
-
-                    <div class="product-add">
-                        <button id="button-cart" class="btn btn-default">Добавить в корзину</button>
-                    </div>
-
-                <?php } ?>
+                <div class="product-add">
+                    <button id="button-cart" class="btn btn-default">Добавить в корзину</button>
+                </div>
 
             </div>
         </div>

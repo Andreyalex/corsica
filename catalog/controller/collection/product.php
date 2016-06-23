@@ -12,8 +12,8 @@ class ControllerCollectionProduct extends Controller {
         $data['text_qty'] = $this->language->get('text_qty');
         $data['text_cart'] = $this->language->get('text_cart');
 
-        $this->checkAsset('wholesale');
-        $this->checkAccess(array('area' => 'wholesale'));
+        // $this->checkAsset('wholesale');
+        // $this->checkAccess(array('area' => 'wholesale'));
 
         $data['breadcrumbs'] = array();
 
@@ -265,6 +265,16 @@ class ControllerCollectionProduct extends Controller {
             $data['button_upload'] = $this->language->get('button_upload');
             $data['button_continue'] = $this->language->get('button_continue');
 
+            $this->load->language('mail/quick_order');
+
+            $data['quick_order_button'] = $this->language->get('quick_order_button');
+            $data['quick_order_modal_title'] = $this->language->get('quick_order_modal_title');
+            $data['quick_order_modal_submit'] = $this->language->get('quick_order_modal_submit');
+            $data['quick_order_modal_input_name'] = $this->language->get('quick_order_modal_input_name');
+            $data['quick_order_modal_input_phone'] = $this->language->get('quick_order_modal_input_phone');
+            $data['quick_order_modal_message_title'] = $this->language->get('quick_order_modal_message_title');
+            $data['quick_order_modal_message_body'] = $this->language->get('quick_order_modal_message_body');
+
             $this->load->model('catalog/review');
 
             $data['tab_description'] = $this->language->get('tab_description');
@@ -486,7 +496,10 @@ class ControllerCollectionProduct extends Controller {
             $customer = $this->registry->get('customer');
             $this->load->model('account/customer');
             $customer = $this->model_account_customer->getCustomer($customer->getId());
-            $data['customer_custom_fields'] = unserialize($customer['custom_field']);
+
+            if ($customer) {
+                $data['customer_custom_fields'] = unserialize($customer['custom_field']);
+            }
             $data['show_price_to_customer'] =
                 empty($data['customer_custom_fields'][CorsicaConfig::CUSTOMER_SHOW_COLLECTION_PRICE_ID]) ||
                 $data['customer_custom_fields'][CorsicaConfig::CUSTOMER_SHOW_COLLECTION_PRICE_ID] == CorsicaConfig::CUSTOMER_SHOW_COLLECTION_PRICE_YES_ID;

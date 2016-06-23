@@ -12,8 +12,8 @@ class ControllerCollectionCategory extends Controller {
 
         $this->load->model('tool/image');
 
-        $this->checkAsset('wholesale');
-        $this->checkAccess(array('area' => 'wholesale'));
+        // $this->checkAsset('wholesale');
+        // $this->checkAccess(array('area' => 'wholesale'));
 
         if (isset($this->request->get['filter'])) {
             $filter = $this->request->get['filter'];

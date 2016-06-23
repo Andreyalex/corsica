@@ -13,10 +13,8 @@
 				<div class="col-6 product-item">
 					<img src="<?php echo $product['thumb']; ?>" />
 					<div class="product-desc text-center">
-                        <div class="product-name">
-                            <h2><?php echo $product['name']; ?></h2>
-                        </div>
-						<div class="product-size">
+                        <h2 class="product-name"><?php echo $product['name']; ?></h2>
+						<!-- <div class="product-size">
 							<h4>Доступные размеры</h4>
                             <div class="size-item">
                                 <?php foreach ($product['options'] as $option) { ?>
@@ -35,7 +33,7 @@
                                 <?php } ?>
                             <?php } ?>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</a>

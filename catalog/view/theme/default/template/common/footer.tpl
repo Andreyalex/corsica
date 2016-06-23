@@ -33,7 +33,7 @@
 			error = true;
 		} else {
 			input.removeClass('error');
-			error = false;
+			error = true;
 		}
 
 		if (!error) {

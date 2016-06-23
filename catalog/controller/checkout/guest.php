@@ -186,9 +186,9 @@ class ControllerCheckoutGuest extends Controller {
 		}
 
 		// Check if guest checkout is available.
-		if (!$this->config->get('config_checkout_guest') || $this->config->get('config_customer_price') || $this->cart->hasDownload()) {
-			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
-		}
+		// if (!$this->config->get('config_checkout_guest') || $this->config->get('config_customer_price') || $this->cart->hasDownload()) {
+		// 	$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
+		// }
 
 		if (!$json) {
 			if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {

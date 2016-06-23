@@ -5,43 +5,28 @@
 	<?php $i = 1; ?>
 
 	<?php if ($categories) { ?>
-		<?php foreach ($categories as $category) { ?>
-			<?php if ($i == 1) { ?>
-				<?php if ($logged) { ?>
+		<?php foreach ($categories as $i => $category) { ?>
+			<?php if ($i == 0) { ?>
 					<a href="<?php echo $category['href']; ?>">
 						<div class="col-md-6 collection">
 							<img src="<?php echo $category['image']; ?>" alt="<?php echo $category['name']; ?>"/>
-							<div class="inner fade">
-								<div class="label"></div>
-								<div class="title"><?php echo $text_collection; ?></div>
+							<div class="inner fadeIn">
+								<!-- <div class="label"></div> -->
+								<h2 class="title"><?php echo $text_collection; ?></h2>
 							</div>
 						</div>
 					</a>
-				<?php } else { ?>
-					<a href="index.php?route=account/login">
-						<div class="col-md-6 collection">
-							<img src="<?php echo $category['image']; ?>" alt="<?php echo $category['name']; ?>"/>
-							<div class="inner fade">
-								<div class="lock"><i class="fa fa-lock fa-4x"></i></div>
-								<div class="title"><?php echo $text_logout; ?></div>
-							</div>
-						</div>
-					</a>
-				<?php } ?>
 			<?php } else { ?>
 				<a href="<?php echo $category['href']; ?>">
 					<div class="col-md-6 collection">
 						<img src="<?php echo $category['image']; ?>" alt="<?php echo $category['name']; ?>"/>
-						<div class="inner fade">
-							<div class="label"></div>
-							<div class="title"><?php echo $category['name']; ?></div>
+						<div class="inner fadeIn">
+							<!-- <div class="label"></div> -->
+							<h2 class="title"><?php echo $category['name']; ?></h2>
 						</div>
 					</div>
 				</a>
 			<?php } ?>
-
-			<?php $i++ ?>
-
 		<?php } ?>
 	<?php } ?>
 
@@ -51,9 +36,9 @@
 	<a href="/shop">
 		<div class="col-md-12 magazine">
 			<img src="image/catalog/bg-store.jpg" alt="<?php echo $text_store; ?>"/>
-			<div class="inner fade">
-				<div class="label"></div>
-				<div class="title"><?php echo $text_store; ?></div>
+			<div class="inner fadeIn">
+				<!-- <div class="label"></div> -->
+				<h2 class="title"><?php echo $text_store; ?></h2>
 			</div>
 		</div>
 	</a>

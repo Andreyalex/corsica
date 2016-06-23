@@ -132,16 +132,19 @@
                         <br/>
                     <?php } ?>
 
-                    <div class="form-group">
+<!--                     <div class="form-group">
                         <label class="control-label" for="input-quantity"><?php echo $text_qty; ?></label>
                         <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control">
-                    </div>
+                    </div> -->
 
                 </div>
 
-                <div class="product-add">
-                    <p><?php echo $text_cart; ?></p>
+<!--                 <div class="product-add">
                     <button id="button-cart" class="btn btn-default"><?php echo $button_cart; ?></button>
+                </div> -->
+
+                <div class="quick-order">
+                	<button class="btn btn-default" data-toggle="modal" data-target="#quickOrderModal"><?php echo $quick_order_button; ?></button>
                 </div>
                 
             </div>
@@ -212,9 +215,87 @@ $(document).ready(function() {
     $('.options-color .item').tooltip({ container: 'body' });
 });
 
+</script>
 
+<div class="modal fade" id="quickOrderModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<form id="quickOrder">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h3 class="modal-title text-center"><?php echo $quick_order_modal_title; ?></h3>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<input class="form-control" type="text" name="name" placeholder="<?php echo $quick_order_modal_input_name; ?>">
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="text" name="phone" placeholder="<?php echo $quick_order_modal_input_phone; ?>">
+					</div>
+					<div class="form-control message hidden">
+						<h4><?php echo $quick_order_modal_message_title; ?></h4>
+						<p><?php echo $quick_order_modal_message_body; ?></p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-default"><?php echo $quick_order_modal_submit; ?></button>
+				</div>
+				<div class="hidden">
+					<input type="hidden" name="subject" value="Оформить заказ">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
+<script type="text/javascript">
+	$('#quickOrder').on('submit', function(e) {
+		e.preventDefault();
 
+		var form = $(this),
+			name = $(this).find('input[name=name]'),
+			phone = $(this).find('input[name=phone]');
+			error = true;
+
+		if (name.val() == '') {
+			name.addClass('error');
+			error = true;
+		} else {
+			name.removeClass('error');
+			error = false;
+		}
+
+		if (phone.val() == '') {
+			phone.addClass('error');
+			error = true;
+		} else {
+			phone.removeClass('error');
+			error = false;
+		}
+
+		if (!error) {
+			$.ajax({
+				type: 'post',
+				url: 'index.php?route=mail/mail',
+				dataType: 'json',
+				data: form.serialize(),
+				beforeSend: function(data) {
+					form.find('input[type=submit]').attr('disabled', true);
+				},
+				success: function(data) {
+					form.find('.message').removeClass('hidden');
+
+					setTimeout(function() {
+						form.find('.message').addClass('hidden');
+					}, 3500);
+				},
+
+				complete: function(data) {
+					form.find('input[type=submit]').attr('disabled', false);
+				}
+			});
+		}
+	});
 </script>
 
 <?php echo $footer; ?>

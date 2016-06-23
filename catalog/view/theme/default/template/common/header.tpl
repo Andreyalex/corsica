@@ -38,7 +38,7 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
 	<link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
 
-<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<link href="/catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
 <link href="<?php echo $theme; ?>/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="<?php echo $theme; ?>/css/grid.css" rel="stylesheet" type="text/css">
@@ -77,11 +77,11 @@ $theme = HTTP_SERVER . 'catalog/view/theme/default';
                     <?php echo $cart; ?>
                 </li>
 
-                <?php if ($logged) { ?>
+                <!-- <?php if ($logged) { ?>
 		            <li class="menu-item"><a href="<?php echo $logout; ?>"><i class="fa fa-lock"></i> <?php echo $text_logout; ?></a></li>
 				<?php } else { ?>
 					<li class="menu-item"><a href="<?php echo $login; ?>" class="btn btn-login"><i class="fa fa-unlock-alt"></i> <?php echo $text_login; ?></a></li>
-				<?php } ?>
+				<?php } ?> -->
 
 				<?php foreach ($informations as $information) { ?>
 					<li class="menu-item"><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>

@@ -10,6 +10,16 @@ class ControllerMailMail extends Controller {
 
 		$this->load->library('mail');
 
+		if (isset($this->request->post['subject'])) {
+			$subject = $this->request->post['subject'];
+		} else {
+			$subject = 'Обратный звонок';
+		}
+
+		if (isset($this->request->post['name'])) {
+            $phone = $this->request->post['name'];
+        }
+
         if (isset($this->request->post['phone'])) {
             $phone = $this->request->post['phone'];
         }
@@ -24,10 +34,18 @@ class ControllerMailMail extends Controller {
             $mail->smtp_port = $this->config->get('config_mail_smtp_port');
             $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
         	$mail->setSender($this->config->get('config_email'));
-        	$mail->setSubject('Обратный звонок');
+        	$mail->setSubject($subject);
         	$mail->setTo($this->config->get('config_email'));
 	        $mail->setFrom($this->config->get('config_email'));
-	        $text = 'Пререзвоните мне на номер - ' .$phone;
+
+	        if ($subject == 'Обратный звонок') {
+	        	$text = 'Пререзвоните мне на номер - ' . $phone;
+	        } else {
+	        	$text = 'Я бы хотел оформить заказ. Мои контактные данные:\n';
+	        	$text = 'Имя - ' . $name . '\n';
+	        	$text .= 'Контактный телефон - ' . $phone .'\n';
+	        }
+
 	        $mail->setText($text);
 
 	        if (!$mail->send()) {
