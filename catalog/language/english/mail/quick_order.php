@@ -1,6 +1,6 @@
 <?php
 
-$_['quick_order_button'] = 'QUICK ORDER';
+$_['quick_order_button'] = 'CHECK THE AVAILABILITY';
 $_['quick_order_modal_title'] = 'QUICK ORDER';
 $_['quick_order_modal_submit'] = 'ORDER';
 
