@@ -190,16 +190,16 @@ var cart = {
       data: 'key=' + key,
       dataType: 'json',
       beforeSend: function() {
-        $('#cart > button').button('loading');
+        $('#cart > button').html($('#cart > button').data('loading-text'));
       },
       success: function(json) {
-        $('#cart > button').button('reset');
 
         $('#cart-total').html(json['total']);
 
         if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
           location = 'index.php?route=checkout/cart';
         } else {
+          $('#cart > button').html('<i class="fa fa-shopping-cart"></i> ' + json['total']);
           $('#cart > ul').load('index.php?route=common/cart/info ul li');
         }
       }
